@@ -15,6 +15,7 @@ public class Main {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
 			Statement stmt = con.createStatement();
 
+			// la base de datos esta creada entera
 			// SI NO TENÉIS LA BASE DE DATOS CREADA, DESCOMENTAD ESTE TROZO DE CÓDIGO
 			// EJECUTAD EL ARCHIVO Y YA
 
