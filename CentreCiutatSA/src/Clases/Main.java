@@ -51,6 +51,30 @@ public class Main {
 					salida = true;
 					continue;
 
+				}else {
+					
+					switch (op){
+					case 1:
+						Scanner login = new Scanner(System.in);
+						
+						//usuario
+						System.out.println("Usuario: ");
+						String usuario = login.next();
+						System.out.println("");
+						//contraseña
+						System.out.println("Contraseña: ");
+						String contraseña = login.next();
+						System.out.println("");
+						if() {
+							//admin
+						}else {
+							//normal
+						}
+						 break; 
+					  default:
+						  System.out.println("");
+						   System.out.println("No has puesto ninguna opcion permitida");
+					}
 				}
 
 			} while (salida != true);
