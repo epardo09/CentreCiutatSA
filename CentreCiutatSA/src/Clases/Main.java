@@ -31,9 +31,14 @@ public class Main {
 			 */
 
 			// crear tabla usuarios
-			// crearUsuarios(con, "centreciutat");
+			//crearUsuarios(con, "centreciutat");
+			// crear estacionamiento
+			//crearEstacionamientos(con, "centreciutat");
+			
 			// crear tabla inquilinos
 			//crearInquilinos(con, "centreciutat");
+			// crear vehiculos
+			//crearVehiculos(con, "centreciutat");
 
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
 					// programa
@@ -240,9 +245,9 @@ public class Main {
 	private static void crearInquilinos(Connection connection, String BDNombre) throws SQLException {
 		String createString = "create table " + BDNombre + ".inquilinos" + "(dni_inquilino varchar(10) NOT NULL,"
 				+ "nombre varchar(25) NOT NULL, apellidos varchar(50), direccion varchar(25),"
-				+ " cuenta_corriente varchar(50), matricula varchar(7), codigo_estacionamiento int, user varchar(50),"
+				+ " cuenta_corriente varchar(50), matricula_vehiculo varchar(7), codigo_estacionamiento int, user varchar(50),"
 				+ " PRIMARY KEY (dni_inquilino),"
-				+ " FOREIGN KEY (user) REFERENCES usuarios(user))";
+				+ " FOREIGN KEY (user) REFERENCES usuarios(user), FOREIGN KEY (matricula_vehiculo) REFERENCES vehiculos(matricula_vehiculo))";
 
 		Statement stmt = null;
 
@@ -251,7 +256,7 @@ public class Main {
 			stmt = connection.createStatement(); // Creamos un Statement
 			stmt.executeUpdate(createString); // Ejecutamos la consulta
 
-			System.out.println("¡Se ha creado la tabla usuarios correctamente!");
+			System.out.println("¡Se ha creado la tabla inquilinos correctamente!");
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -259,6 +264,52 @@ public class Main {
 			stmt.close(); // Cerramos la conexión
 		}
 	}
+
+	private static void crearEstacionamientos(Connection connection, String BDNombre) throws SQLException {
+		String createString = "create table " + BDNombre + ".estacionamiento" + "(codigo_estacionamiento int NOT NULL, alquilado varchar(1),"
+				+ " m2 int, precio_mensual decimal, dni_inquilino varchar(10),"
+				+ " PRIMARY KEY (codigo_estacionamiento),"
+				+ " FOREIGN KEY (dni_inquilino) REFERENCES inquilinos(dni_inquilino))";
+
+		Statement stmt = null;
+
+		try {
+
+			stmt = connection.createStatement(); // Creamos un Statement
+			stmt.executeUpdate(createString); // Ejecutamos la consulta
+
+			System.out.println("¡Se ha creado la tabla estacionamientos correctamente!");
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close(); // Cerramos la conexión
+		}
+	}
+	
+	private static void crearVehiculos(Connection connection, String BDNombre) throws SQLException {
+		String createString = "create table " + BDNombre + ".vehiculos" + "(matricula_vehiculo varchar(7) NOT NULL, modelo varchar(20),"
+				+ " marca varchar(25), color varchar(25),"
+				+ " tipoVehiculo varchar(25), dni_inquilino varchar(10),"
+				+ " PRIMARY KEY (matricula_vehiculo),"
+				+ " FOREIGN KEY (dni_inquilino) REFERENCES inquilinos(dni_inquilino))";
+
+		Statement stmt = null;
+
+		try {
+
+			stmt = connection.createStatement(); // Creamos un Statement
+			stmt.executeUpdate(createString); // Ejecutamos la consulta
+
+			System.out.println("¡Se ha creado la tabla vehiculos correctamente!");
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close(); // Cerramos la conexión
+		}
+	}
+
 
 	private static void printSQLException(SQLException ex) {
 
