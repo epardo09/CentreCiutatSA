@@ -18,13 +18,15 @@ public class Main {
 			String sql = "CREATE DATABASE CentreCiutat";
 			stmt.executeUpdate(sql);
 			System.out.println("Base de datos creada con éxito.");
+			// creación de tablas
+			
 
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
 					// programa
 				System.out.println(" =======================================");
 				System.out.println(" === Bienvenido al parking APP  v1.0 ===");
 				System.out.println(" =======================================");
-				System.out.println("Prueba");
+				System.out.println("");
 
 				System.out.println("MENU:");
 				System.out.println("");
@@ -57,6 +59,30 @@ public class Main {
 			printSQLException(e);
 		}
 	}
+	
+	private static void crearUsuarios(Connection connection, String BDNombre) throws SQLException {
+
+		String createString = "create table " + BDNombre + ".CentreCiutat " + "(id_usuario integer(11) NOT NULL AUTO_INCREMENT,"
+				+ "user varchar(50) NOT NULL," + "password varchar(50) NOT NULL,"
+				+ "PRIMARY KEY (id_usuario))";
+
+		Statement stmt = null;
+
+		try {
+
+			stmt = connection.createStatement(); // Creamos un Statement
+			stmt.executeUpdate(createString); // Ejecutamos la consulta
+
+			System.out.println("¡Se ha creado la tabla usuarios correctamente!");
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close(); // Cerramos la conexión
+		}
+
+	}
+
 
 	private static void printSQLException(SQLException ex) {
 
