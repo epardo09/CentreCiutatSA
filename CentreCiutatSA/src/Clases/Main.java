@@ -14,17 +14,17 @@ public class Main {
 		try {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
 			Statement stmt = con.createStatement();
-			
+
 			// SI NO TENÉIS LA BASE DE DATOS CREADA, DESCOMENTAD ESTE TROZO DE CÓDIGO
 			// EJECUTAD EL ARCHIVO Y YA
-			
+
 			/*
 			 * // System.out.println("¡Conexión establecida!"); String sql =
 			 * "CREATE DATABASE CentreCiutat"; stmt.executeUpdate(sql);
 			 * System.out.println("Base de datos creada con éxito.");
 			 */
 			// crear tabla usuarios
-			//crearUsuarios(con, "centreciutat");
+			// crearUsuarios(con, "centreciutat");
 
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
 					// programa
@@ -56,27 +56,27 @@ public class Main {
 					salida = true;
 					continue;
 
-				}else {
-					
-					switch (op){
+				} else {
+
+					switch (op) {
 					case 1:
 						Scanner login = new Scanner(System.in);
-						
-						//usuario
+
+						// usuario
 						System.out.println("Usuario: ");
 						String usuario = login.next();
 						System.out.println("");
-						//contraseña
+						// contraseña
 						System.out.println("Contraseña: ");
 						String contraseña = login.next();
 						System.out.println("");
 						/*
 						 * if() { //admin }else { //normal }
 						 */
-						 break; 
-					  default:
-						  System.out.println("");
-						   System.out.println("No has puesto ninguna opcion permitida");
+						break;
+					default:
+						System.out.println("");
+						System.out.println("No has puesto ninguna opcion permitida");
 					}
 				}
 
@@ -86,7 +86,7 @@ public class Main {
 			printSQLException(e);
 		}
 	}
-	
+
 	private static void crearUsuarios(Connection connection, String BDNombre) throws SQLException {
 
 		String createString = "create table " + BDNombre + ".usuarios" + "(user varchar(50) NOT NULL,"
@@ -109,6 +109,27 @@ public class Main {
 
 	}
 
+	private static void crearInquilinos(Connection connection, String BDNombre) throws SQLException {
+		String createString = "create table " + BDNombre + ".inquilinos" + "(dni_inquilino varchar(10) NOT NULL,"
+				+ "nombre varchar(25) NOT NULL, apellidos varchar(50), direccion varchar(25),"
+				+ "cuenta_corriente varchar(50), matricula varchar(7), codigo_estacionamiento int, PRIMARY KEY (dni_inquilino)"
+				+ ", FOREIGN_KEY )";
+
+		Statement stmt = null;
+
+		try {
+
+			stmt = connection.createStatement(); // Creamos un Statement
+			stmt.executeUpdate(createString); // Ejecutamos la consulta
+
+			System.out.println("¡Se ha creado la tabla usuarios correctamente!");
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close(); // Cerramos la conexión
+		}
+	}
 
 	private static void printSQLException(SQLException ex) {
 
