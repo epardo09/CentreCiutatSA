@@ -14,12 +14,17 @@ public class Main {
 		try {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
 			Statement stmt = con.createStatement();
-			// System.out.println("¡Conexión establecida!");
-			String sql = "CREATE DATABASE CentreCiutat";
-			stmt.executeUpdate(sql);
-			System.out.println("Base de datos creada con éxito.");
-			// creación de tablas
 			
+			// SI NO TENÉIS LA BASE DE DATOS CREADA, DESCOMENTAD ESTE TROZO DE CÓDIGO
+			// EJECUTAD EL ARCHIVO Y YA
+			
+			/*
+			 * // System.out.println("¡Conexión establecida!"); String sql =
+			 * "CREATE DATABASE CentreCiutat"; stmt.executeUpdate(sql);
+			 * System.out.println("Base de datos creada con éxito.");
+			 */
+			// crear tabla usuarios
+			//crearUsuarios(con, "centreciutat");
 
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
 					// programa
@@ -84,9 +89,8 @@ public class Main {
 	
 	private static void crearUsuarios(Connection connection, String BDNombre) throws SQLException {
 
-		String createString = "create table " + BDNombre + ".CentreCiutat " + "(id_usuario integer(11) NOT NULL AUTO_INCREMENT,"
-				+ "user varchar(50) NOT NULL," + "password varchar(50) NOT NULL,"
-				+ "PRIMARY KEY (id_usuario))";
+		String createString = "create table " + BDNombre + ".usuarios" + "(user varchar(50) NOT NULL,"
+				+ "password varchar(50) NOT NULL, PRIMARY KEY (user))";
 
 		Statement stmt = null;
 
