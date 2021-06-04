@@ -65,9 +65,55 @@ public class Main {
 						System.out.println("Contraseña: ");
 						String contraseña = login.next();
 						System.out.println("");
-						/*
-						 * if() { //admin }else { //normal }
-						 */
+						
+						 if() {
+							 //admin
+							 int salir=0;
+								while(salir != 5) {
+								Scanner Adm = new Scanner(System.in);
+								
+								System.out.println(" =======================================");
+								System.out.println(" === Bienvenido Adm parking APP  v1.0 ===");
+								System.out.println(" =======================================");
+								System.out.println("");
+
+								System.out.println("MENU:");
+								System.out.println("");
+
+								System.out.println("1) AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS");
+								System.out.println("2) EDITAR ALQUILERES");
+								System.out.println("3) ELIMINAR ALQUILERES");
+								System.out.println("4) LISTAR ALQUILERES");
+								System.out.println("5) SALIR AL INICIO");
+								System.out.println("");
+
+								System.out.print("¿Que desea hacer?: ");	 
+								String opAdm = Adm.next();
+								switch (op){
+								case 1:
+								
+								break; 
+								
+								case 2:
+									
+									break; 
+									
+								case 3:
+									
+									break; 
+								case 4:
+									
+									break; 
+								  default:
+									  System.out.println("");
+									   System.out.println("No has puesto ninguna opcion permitida");
+								}
+								}
+							 }else {
+								 //normal 
+								 }
+						 }
+						 
 						 break; 
 					  default:
 						  System.out.println("");
