@@ -37,6 +37,7 @@ public class Main {
 
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
 					// programa
+				System.out.println("");
 				System.out.println(" =======================================");
 				System.out.println(" === Bienvenido al parking APP  v1.0 ===");
 				System.out.println(" =======================================");
@@ -87,6 +88,7 @@ public class Main {
 							while (salir != 5) {
 								Scanner Adm = new Scanner(System.in);
 
+								System.out.println("");
 								System.out.println(" ======================================");
 								System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
 								System.out.println(" ======================================");
@@ -108,16 +110,18 @@ public class Main {
 								switch (opAdm) {
 								case 1:
 									Scanner admInsert = new Scanner(System.in);
-									System.out.println(" ======================================");
-									System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
-									System.out.println(" ======================================");
+									
+									System.out.println("");
+									System.out.println(" ===============================================");
+									System.out.println(" == AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS ==");
+									System.out.println(" ===============================================");
 									System.out.println("");
 
 									System.out.println("Pon el nombre del Usuario: ");
 									String UserN = admInsert.next();
 									System.out.println("Pon el dni: ");
 									String UserDni = admInsert.next();
-									System.out.println("Pon el estacionamiento que quieras añadir con el usuario: ");
+									System.out.println("Pon el estacionamiento que quieras añadir al usuario: ");
 									String UserEst = admInsert.next();
 									System.out.println("");
 									// metodo
@@ -125,21 +129,60 @@ public class Main {
 									break;
 
 								case 2:
-
+									//scanner
+									Scanner admEdit = new Scanner(System.in);
+									//cabezal
+									System.out.println("");
+									System.out.println(" =======================");
+									System.out.println(" == EDITAR ALQUILERES ==");
+									System.out.println(" =======================");
+									System.out.println("");
+									//pregunta con scaner
+									System.out.println("Pon el nombre del Usuario: ");
+									String editUser = admEdit.next();
+									System.out.println("Pon el dni: ");
+									String editDni = admEdit.next();
+									System.out.println("Pon el estacionamiento que quieras editar al usuario: ");
+									String editEst = admEdit.next();
+									//llamada del metodo
 									break;
 
 								case 3:
-
+									//scanner
+									Scanner admEli = new Scanner(System.in);
+									
+									//cabezal
+									System.out.println("");
+									System.out.println(" =========================");
+									System.out.println(" == ELIMINAR ALQUILERES ==");
+									System.out.println(" =========================");
+									System.out.println("");
+									
+									//pregunta con scaner
+									System.out.println("Pon el nombre del Usuario: ");
+									String eliUser = admEli.next();
+									System.out.println("Pon el estacionamiento que quieras eliminar al usuario: ");
+									String eliEst = admEli.next();
+									//llamada del metodo
 									break;
 								case 4:
-
+									//cabezal
+									System.out.println("");
+									System.out.println(" =======================");
+									System.out.println(" == LISTAR ALQUILERES ==");
+									System.out.println(" =======================");
+									System.out.println("");
+									
+									//llamada del metodo
+									
+									
 									break;
 								case 5:
+									
 									System.out.println("");
-									System.out.println("");
-									System.out.println(" ===================================");
+									System.out.println(" ===============================");
 									System.out.println(" == Saliendo del menu Adm v.1 ==");
-									System.out.println(" ===================================");
+									System.out.println(" ===============================");
 									System.out.println("");
 									System.out.println("Saliste Correctamente");
 									i = 2;
