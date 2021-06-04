@@ -33,7 +33,7 @@ public class Main {
 			// crear tabla usuarios
 			// crearUsuarios(con, "centreciutat");
 			// crear tabla inquilinos
-			crearInquilinos(con, "centreciutat");
+			//crearInquilinos(con, "centreciutat");
 
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
 					// programa
