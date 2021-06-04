@@ -199,7 +199,52 @@ public class Main {
 								}
 							}
 						} else {
-							// normal
+							
+						
+							switch (normal) {
+							case 1:
+								Scanner buscar = new Scanner(System.in);
+								
+								System.out.println("");
+								System.out.println(" ===============================================");
+								System.out.println(" == BUSCAR USUARIOS ==");
+								System.out.println(" ===============================================");
+								System.out.println("");
+
+								System.out.println("Pon el dni del Usuario que quieres buscar: ");
+								String UserDNI= buscar.next();
+								System.out.println("");
+								
+								//llamada del metodo BuscarUSUARIO
+								break;
+
+							case 2:
+								//scanner
+								Scanner matr = new Scanner(System.in);
+								//cabezal
+								System.out.println("");
+								System.out.println(" =======================");
+								System.out.println(" == BUSCAR VEHICULOS ==");
+								System.out.println(" =======================");
+								System.out.println("");
+								//pregunta con scaner
+								System.out.println("Pon el matricula del vehiculo: ");
+								String BuscarMatr = matr.next();
+						
+								//llamada del metodo BuscarVEHICULO
+								break;							
+								
+							case 3:
+								
+								System.out.println("");
+								System.out.println(" ===============================");
+								System.out.println(" == Saliendo del menu normal v.1 ==");
+								System.out.println(" ===============================");
+								System.out.println("");
+								System.out.println("Saliste Correctamente");
+								i = 2;
+								break;
+							default:
 						}
 						break;
 
