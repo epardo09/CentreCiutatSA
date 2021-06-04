@@ -18,11 +18,12 @@ public class Main {
 			// SI NO TENÉIS LA BASE DE DATOS CREADA, DESCOMENTAD ESTE TROZO DE CÓDIGO
 			// EJECUTAD EL ARCHIVO Y YA
 			
-			/*
-			 * // System.out.println("¡Conexión establecida!"); String sql =
-			 * "CREATE DATABASE CentreCiutat"; stmt.executeUpdate(sql);
-			 * System.out.println("Base de datos creada con éxito.");
-			 */
+			
+			  // System.out.println("¡Conexión establecida!");
+			/*String sql =
+			  "CREATE DATABASE CentreCiutat"; stmt.executeUpdate(sql);
+			  System.out.println("Base de datos creada con éxito.");*/
+			 
 			// crear tabla usuarios
 			//crearUsuarios(con, "centreciutat");
 
@@ -77,9 +78,9 @@ public class Main {
 								while(salir != 5) {
 								Scanner Adm = new Scanner(System.in);
 								
-								System.out.println(" =======================================");
-								System.out.println(" === Bienvenido Adm parking APP  v1.0 ===");
-								System.out.println(" =======================================");
+								System.out.println(" ======================================");
+								System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
+								System.out.println(" ======================================");
 								System.out.println("");
 
 								System.out.println("MENU:");
@@ -93,10 +94,33 @@ public class Main {
 								System.out.println("");
 
 								System.out.print("¿Que desea hacer?: ");	 
-								String opAdm = Adm.next();
-								switch (op){
+								int opAdm = Adm.nextInt();
+								if (opAdm==5) {//Aqui­ comparo el valor de usuario que ha dado si es 6 saldra del programa, si nos pasara al else
+									System.out.println(""); System.out.println("");
+									  System.out.println(" ===================================");
+									  System.out.println(" == Saliendo del menu Adm v.1 ==");
+									  System.out.println(" ===================================");
+									  System.out.println("");
+									  System.out.println("Saliste Correctamente"); 
+									salir = 5;
+									continue;
+								}else{
+									
+								switch (opAdm){
 								case 1:
-								
+									Scanner admInsert = new Scanner(System.in);
+									System.out.println(" ======================================");
+									System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
+									System.out.println(" ======================================");
+									System.out.println("");
+									
+									System.out.println("Pon el nombre del Usuario: ");
+									String UserN = admInsert.next();
+									System.out.println("Pon el estacionamiento que quieras añadir con el usuario: ");
+									String UserC = admInsert.next();
+									System.out.println("");
+									
+									
 								break; 
 								
 								case 2:
@@ -112,6 +136,7 @@ public class Main {
 								  default:
 									  System.out.println("");
 									   System.out.println("No has puesto ninguna opcion permitida");
+								}
 								}
 								}
 							 }else {
