@@ -65,11 +65,9 @@ public class Main {
 						System.out.println("Contraseña: ");
 						String contraseña = login.next();
 						System.out.println("");
-						if() {
-							//admin
-						}else {
-							//normal
-						}
+						/*
+						 * if() { //admin }else { //normal }
+						 */
 						 break; 
 					  default:
 						  System.out.println("");
