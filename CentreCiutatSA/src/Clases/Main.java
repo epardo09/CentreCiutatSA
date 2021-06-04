@@ -24,7 +24,7 @@ public class Main {
 				System.out.println(" =======================================");
 				System.out.println(" === Bienvenido al parking APP  v1.0 ===");
 				System.out.println(" =======================================");
-				System.out.println("");
+				System.out.println("Prueba");
 
 				System.out.println("MENU:");
 				System.out.println("");
