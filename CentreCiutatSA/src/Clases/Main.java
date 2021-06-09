@@ -350,9 +350,9 @@ public class Main {
 			stmt.close(); // Cerramos la conexión
 		}
 	}
-	
+
 	// insertar cosas
-	
+
 	// Método de introduccion de datos de la tabla Zoo_A
 	private static void insertZoo_A(Connection con, String BDNombre) throws SQLException {
 
@@ -382,7 +382,7 @@ public class Main {
 		}
 
 	}
-	
+	// asdfjijosdhf
 
 	private static void insertarOrdenadores(Connection con, String BDNombre, String marca, String modelo,
 			String procesador, String tipoMemoria, int cantidadMemoria, String ubicacion, String numeroSerie)
@@ -390,7 +390,7 @@ public class Main {
 			throws SQLException {
 
 		Statement stmt = null;
-		
+
 		try {
 
 			stmt = con.createStatement();
