@@ -174,7 +174,7 @@ public class Main {
 									System.out.println("");
 									
 									// metodo
-									//insertarUsuariosEstacionamiento(con, "centreciutat", UserN, UserDni, UserEst);
+									insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
 											break;
 
 								case 2:
@@ -663,7 +663,44 @@ public class Main {
 		}
 
 	}
-	
+	private static void insertarUsuariosEstacionamientos(Connection connection, String BDNombre, int numeroInterno, String marca, String modelo, String procesador, String tipoMemoria, int cantidadMemoria, String ubicacion, int numeroSerie) 
+			throws SQLException {
+
+		Statement stmt = null;
+
+		try {
+
+			stmt = connection.createStatement();
+			stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+			ResultSet rs = stmt.executeQuery("SELECT * FROM " + BDNombre + ".estacionamiento");
+
+			
+			rs.moveToInsertRow();
+			//donde se guardara los valores de las preguntas
+			rs.updateInt("numeroInterno", numeroInterno);
+			rs.updateString("marca", marca);
+			rs.updateString("modelo", modelo);
+			rs.updateString("procesador", procesador);
+			rs.updateString("tipoMemoria", tipoMemoria);
+			rs.updateInt("cantidadMemoria", cantidadMemoria);
+			rs.updateString("ubicacion", ubicacion);
+			rs.updateInt("numeroSerie", numeroSerie);
+			
+
+			rs.insertRow();
+			rs.beforeFirst();
+
+			System.out.println("");//mensaje de que todo a ido bien
+			System.out.println("Se ha creado correctamente el nuevo ordenador con el numero interno '" + numeroInterno +  "' en la tabla ordenadores!");
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close();
+		}
+
+	}
 	
 	private static void printSQLException(SQLException ex) {
 
