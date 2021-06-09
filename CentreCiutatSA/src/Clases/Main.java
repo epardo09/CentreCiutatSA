@@ -93,7 +93,7 @@ public class Main {
 							int salir = 0;
 							while (salir != 5) {
 								Scanner Adm = new Scanner(System.in);
-
+								
 								System.out.println("");
 								System.out.println(" ======================================");
 								System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
@@ -199,8 +199,8 @@ public class Main {
 								}
 							}
 						} else {
-							
-						
+							Scanner Norm = new Scanner(System.in);
+							int normal = Norm.nextInt();
 							switch (normal) {
 							case 1:
 								Scanner buscar = new Scanner(System.in);
@@ -245,6 +245,7 @@ public class Main {
 								i = 2;
 								break;
 							default:
+						}
 						}
 						break;
 
