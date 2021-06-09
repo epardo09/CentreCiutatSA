@@ -245,20 +245,18 @@ public class Main {
 								i = 2;
 								break;
 							default:
+								System.out.println("");
+								System.out.println("No has puesto ninguna opcion permitida");
 						}
-						break;
 
-					default:
-						System.out.println("");
-						System.out.println("No has puesto ninguna opcion permitida");
+					
 
 						// admin
 
 					}
 				}
 			} while (salida != true);
-
-		} catch (
+		}catch (
 
 		SQLException e) {
 
@@ -312,7 +310,8 @@ public class Main {
 	}
 
 	private static void crearEstacionamientos(Connection connection, String BDNombre) throws SQLException {
-		String createString = "create table " + BDNombre + ".estacionamiento" + "(codigo_estacionamiento int NOT NULL, alquilado varchar(1),"
+		String createString = "create table " + BDNombre + ".estacionamiento"
+				+ "(codigo_estacionamiento int NOT NULL, alquilado varchar(1),"
 				+ " m2 int, precio_mensual decimal, dni_inquilino varchar(10),"
 				+ " PRIMARY KEY (codigo_estacionamiento),"
 				+ " FOREIGN KEY (dni_inquilino) REFERENCES inquilinos(dni_inquilino))";
@@ -332,11 +331,11 @@ public class Main {
 			stmt.close(); // Cerramos la conexión
 		}
 	}
-	
+
 	private static void crearVehiculos(Connection connection, String BDNombre) throws SQLException {
-		String createString = "create table " + BDNombre + ".vehiculos" + "(matricula_vehiculo varchar(7) NOT NULL, modelo varchar(20),"
-				+ " marca varchar(25), color varchar(25),"
-				+ " tipoVehiculo varchar(25), dni_inquilino varchar(10),"
+		String createString = "create table " + BDNombre + ".vehiculos"
+				+ "(matricula_vehiculo varchar(7) NOT NULL, modelo varchar(20),"
+				+ " marca varchar(25), color varchar(25)," + " tipoVehiculo varchar(25), dni_inquilino varchar(10),"
 				+ " PRIMARY KEY (matricula_vehiculo),"
 				+ " FOREIGN KEY (dni_inquilino) REFERENCES inquilinos(dni_inquilino))";
 
@@ -355,7 +354,6 @@ public class Main {
 			stmt.close(); // Cerramos la conexión
 		}
 	}
-
 
 	private static void printSQLException(SQLException ex) {
 
