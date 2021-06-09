@@ -26,10 +26,10 @@ public class Main {
 			 */
 
 			// System.out.println("¡Conexión establecida!");
-			/*
-			 * String sql = "CREATE DATABASE CentreCiutat"; stmt.executeUpdate(sql);
-			 * System.out.println("Base de datos creada con éxito.");
-			 */
+			
+			 // String sql = "CREATE DATABASE CentreCiutat"; stmt.executeUpdate(sql);
+			 // System.out.println("Base de datos creada con éxito.");
+			 
 
 			// crear tabla usuarios
 			// crearUsuarios(con, "centreciutat");
@@ -39,7 +39,7 @@ public class Main {
 			// crear tabla inquilinos
 			// crearInquilinos(con, "centreciutat");
 			// crear vehiculos
-			// crearVehiculos(con, "centreciutat");
+			 //crearVehiculos(con, "centreciutat");
 
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
 					// programa
@@ -130,9 +130,10 @@ public class Main {
 									System.out.println("Pon el estacionamiento que quieras añadir al usuario: ");
 									String UserEst = admInsert.next();
 									System.out.println("");
+									
 									// metodo
-
-									break;
+									insertarUsuariosEstacionamiento(con, "centreciutat", UserN, UserDni, UserEst);
+											break;
 
 								case 2:
 									// scanner
@@ -150,7 +151,9 @@ public class Main {
 									String editDni = admEdit.next();
 									System.out.println("Pon el estacionamiento que quieras editar al usuario: ");
 									String editEst = admEdit.next();
+									
 									// llamada del metodo
+									modificaAlquiler(con, "centreciutat", editUser, editDni,editEst);
 									break;
 
 								case 3:
@@ -167,11 +170,16 @@ public class Main {
 									// pregunta con scaner
 									System.out.println("Pon el nombre del Usuario: ");
 									String eliUser = admEli.next();
+									System.out.println("Pon el Dni del Usuario: ");
+									String elidni = admEli.next();
 									System.out.println("Pon el estacionamiento que quieras eliminar al usuario: ");
 									String eliEst = admEli.next();
+									
 									// llamada del metodo
+									eliminarAlquileres(con, "centreciutat", elidni, eliEst, eliUser);
 									break;
 								case 4:
+									Scanner admlistar = new Scanner(System.in);
 									// cabezal
 									System.out.println("");
 									System.out.println(" =======================");
@@ -180,7 +188,7 @@ public class Main {
 									System.out.println("");
 
 									// llamada del metodo
-
+									listadoAlquileres(con, "centreciutat");
 									break;
 								case 5:
 
@@ -353,39 +361,11 @@ public class Main {
 	
 	// insertar cosas
 	
-	// Método de introduccion de datos de la tabla Zoo_A
-	private static void insertZoo_A(Connection con, String BDNombre) throws SQLException {
-
-		Statement stmt = null;
-
-		try {
-
-			stmt = con.createStatement();
-
-			// CAMPOS cliente: id, nombre, nombre cient, especie, precio
-
-			stmt.executeUpdate("INSERT INTO " + BDNombre + ".zoo_a VALUES (" + " 1, 'Cuervo', 'Corvus corax', 1, 400)");
-
-			stmt.executeUpdate(
-					"INSERT INTO " + BDNombre + ".zoo_a VALUES (" + " 2, 'Coyote', 'Canis latrans', 2, 1500)");
-
-			stmt.executeUpdate("INSERT INTO " + BDNombre + ".zoo_a VALUES ("
-					+ " 3, 'Cocodrilo del pantano', 'Crocodylus moreleti', 4, 6000)");
-
-			System.out.println("");
-			System.out.println("¡Se han agregado 3 animales a la tabla Zoo_a!");
-
-		} catch (SQLException e) {
-			printSQLException(e);
-		} finally {
-			stmt.close();
-		}
-
-	}
 	
-
-	private static void insertarOrdenadores(Connection con, String BDNombre, String marca, String modelo,
-			String procesador, String tipoMemoria, int cantidadMemoria, String ubicacion, String numeroSerie)
+	
+//metodo insertar usuarios al estacionamiento
+	private static void insertarUsuariosEstacionamiento(Connection con, String BDNombre, String usuario, String Dni,
+			String estacionamiento)
 
 			throws SQLException {
 
@@ -397,28 +377,21 @@ public class Main {
 
 			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM " + BDNombre + ".ordenadores" + "");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM " + BDNombre + ".centreciutat" );
 
 			// Nos posicionamos con el cursor en la próxima fila vacía de la tabla
 
 			rs.moveToInsertRow();
 
 			// Actualizamos los campos con los datos pasados por parámetro en la llamada al
-			// método
+			
 
-			rs.updateString("marca", marca);
+			rs.updateString("Usuario", usuario);
 
-			rs.updateString("modelo", modelo);
+			rs.updateString("Dni", Dni);
 
-			rs.updateString("procesador", procesador);
+			rs.updateString("Estacionamiento", estacionamiento);
 
-			rs.updateString("tipoMemoria", tipoMemoria);
-
-			rs.updateInt("cantidadMemoria", cantidadMemoria);
-
-			rs.updateString("ubicacion", ubicacion);
-
-			rs.updateString("numeroSerie", numeroSerie);
 
 			// Insertamos la nueva fila con los datos proporcionados
 
@@ -430,7 +403,7 @@ public class Main {
 
 			System.out.println("");
 
-			System.out.println("Insertado correctamente.");
+			System.out.println("Insertado correctamente el nuevo " +usuario+ " al nuevo "+ estacionamiento);
 
 		} catch (SQLException e) {
 
@@ -440,6 +413,91 @@ public class Main {
 
 			stmt.close();
 
+		}
+
+	}
+	// Modificar la BBDD 
+	private static void modificaAlquiler(Connection con, String BDNombre,String usuario, String dni,String estacionamiento) throws SQLException {
+
+		Statement stmt = null;
+
+		try {
+			//modificaAlquiler(con, "centreciutat", editUser, editDni,editEst);
+			stmt = con.createStatement();
+			stmt.executeUpdate("UPDATE " + BDNombre + ".estacionamiento SET codigo_estacionamiento = "+"'"+ estacionamiento +"'"+ " where dni_inquilino = "+dni);
+
+			System.out.println("");
+			System.out.println("Se ha modificado el estacionamiento: "+estacionamiento+" del usuario: "+usuario);
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close();
+		}
+
+	}
+	private static void eliminarAlquileres(Connection con, String BDNombre, String dni, String CodEst,String usuario) throws SQLException {
+
+		 
+		String eliminarfila= "DELETE FROM "+ BDNombre+ ".estacionamiento "+ "WHERE  numeroInterno= "+dni;
+		
+		Statement stmt = null;
+		stmt.executeUpdate("UPDATE + BDNombre .estacionamiento set alquilado = 'N' where codigo_estacionamiento = CodEst");
+		try {
+
+			stmt = con.createStatement();
+			// poner los valores para que se cambie y la tabla
+			stmt.executeUpdate(eliminarfila);
+
+			// mensaje para que sepa que a ido todo bien
+			System.out.println("");
+			System.out.println("se a eliminado correctamente el alquiler del usuario:  "+usuario+ " de la tabla ordenadores");
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close();
+		}
+
+	}
+	private static void listadoAlquileres(Connection con, String BDNombre) throws SQLException {
+
+		Statement stmt = null;
+		String query = "select * " + " from " + BDNombre + ".inquilino";
+
+		try {
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			//listados
+			System.out.println("");
+			System.out.println("**** Lista de Alquileres ****");
+
+			while (rs.next()) {
+
+				System.out.println("");
+				System.out.println("*************************************");
+
+				int dni_inquilino = rs.getInt(1);
+				System.out.println("Dni inquilino: " + dni_inquilino);
+				
+				String matricula_vehiculo = rs.getString(2);
+				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
+				
+				String codigo_estacionamiento = rs.getString(3);
+				System.out.println("Codigo estacionamiento: " + codigo_estacionamiento);
+				
+				System.out.println("*************************************");
+				
+			
+				 
+			}
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close();
 		}
 
 	}
