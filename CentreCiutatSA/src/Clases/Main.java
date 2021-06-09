@@ -32,14 +32,14 @@ public class Main {
 			 */
 
 			// crear tabla usuarios
-			//crearUsuarios(con, "centreciutat");
+			// crearUsuarios(con, "centreciutat");
 			// crear estacionamiento
-			//crearEstacionamientos(con, "centreciutat");
-			
+			// crearEstacionamientos(con, "centreciutat");
+
 			// crear tabla inquilinos
-			//crearInquilinos(con, "centreciutat");
+			// crearInquilinos(con, "centreciutat");
 			// crear vehiculos
-			//crearVehiculos(con, "centreciutat");
+			// crearVehiculos(con, "centreciutat");
 
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
 					// programa
@@ -116,7 +116,7 @@ public class Main {
 								switch (opAdm) {
 								case 1:
 									Scanner admInsert = new Scanner(System.in);
-									
+
 									System.out.println("");
 									System.out.println(" ===============================================");
 									System.out.println(" == AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS ==");
@@ -135,56 +135,55 @@ public class Main {
 									break;
 
 								case 2:
-									//scanner
+									// scanner
 									Scanner admEdit = new Scanner(System.in);
-									//cabezal
+									// cabezal
 									System.out.println("");
 									System.out.println(" =======================");
 									System.out.println(" == EDITAR ALQUILERES ==");
 									System.out.println(" =======================");
 									System.out.println("");
-									//pregunta con scaner
+									// pregunta con scaner
 									System.out.println("Pon el nombre del Usuario: ");
 									String editUser = admEdit.next();
 									System.out.println("Pon el dni: ");
 									String editDni = admEdit.next();
 									System.out.println("Pon el estacionamiento que quieras editar al usuario: ");
 									String editEst = admEdit.next();
-									//llamada del metodo
+									// llamada del metodo
 									break;
 
 								case 3:
-									//scanner
+									// scanner
 									Scanner admEli = new Scanner(System.in);
-									
-									//cabezal
+
+									// cabezal
 									System.out.println("");
 									System.out.println(" =========================");
 									System.out.println(" == ELIMINAR ALQUILERES ==");
 									System.out.println(" =========================");
 									System.out.println("");
-									
-									//pregunta con scaner
+
+									// pregunta con scaner
 									System.out.println("Pon el nombre del Usuario: ");
 									String eliUser = admEli.next();
 									System.out.println("Pon el estacionamiento que quieras eliminar al usuario: ");
 									String eliEst = admEli.next();
-									//llamada del metodo
+									// llamada del metodo
 									break;
 								case 4:
-									//cabezal
+									// cabezal
 									System.out.println("");
 									System.out.println(" =======================");
 									System.out.println(" == LISTAR ALQUILERES ==");
 									System.out.println(" =======================");
 									System.out.println("");
-									
-									//llamada del metodo
-									
-									
+
+									// llamada del metodo
+
 									break;
 								case 5:
-									
+
 									System.out.println("");
 									System.out.println(" ===============================");
 									System.out.println(" == Saliendo del menu Adm v.1 ==");
@@ -199,12 +198,12 @@ public class Main {
 								}
 							}
 						} else {
-							
-						
+							Scanner Norm = new Scanner(System.in);
+							int normal = Norm.nextInt();
 							switch (normal) {
 							case 1:
 								Scanner buscar = new Scanner(System.in);
-								
+
 								System.out.println("");
 								System.out.println(" ===============================================");
 								System.out.println(" == BUSCAR USUARIOS ==");
@@ -212,30 +211,30 @@ public class Main {
 								System.out.println("");
 
 								System.out.println("Pon el dni del Usuario que quieres buscar: ");
-								String UserDNI= buscar.next();
+								String UserDNI = buscar.next();
 								System.out.println("");
-								
-								//llamada del metodo BuscarUSUARIO
+
+								// llamada del metodo BuscarUSUARIO
 								break;
 
 							case 2:
-								//scanner
+								// scanner
 								Scanner matr = new Scanner(System.in);
-								//cabezal
+								// cabezal
 								System.out.println("");
 								System.out.println(" =======================");
 								System.out.println(" == BUSCAR VEHICULOS ==");
 								System.out.println(" =======================");
 								System.out.println("");
-								//pregunta con scaner
+								// pregunta con scaner
 								System.out.println("Pon el matricula del vehiculo: ");
 								String BuscarMatr = matr.next();
-						
-								//llamada del metodo BuscarVEHICULO
-								break;							
-								
+
+								// llamada del metodo BuscarVEHICULO
+								break;
+
 							case 3:
-								
+
 								System.out.println("");
 								System.out.println(" ===============================");
 								System.out.println(" == Saliendo del menu normal v.1 ==");
@@ -247,16 +246,13 @@ public class Main {
 							default:
 								System.out.println("");
 								System.out.println("No has puesto ninguna opcion permitida");
+							}
 						}
-
-					
-
-						// admin
-
+						break;
 					}
 				}
 			} while (salida != true);
-		}catch (
+		} catch (
 
 		SQLException e) {
 
@@ -353,6 +349,97 @@ public class Main {
 		} finally {
 			stmt.close(); // Cerramos la conexión
 		}
+	}
+	
+	// Método de introduccion de datos de la tabla Zoo_A
+	private static void insertZoo_A(Connection con, String BDNombre) throws SQLException {
+
+		Statement stmt = null;
+
+		try {
+
+			stmt = con.createStatement();
+
+			// CAMPOS cliente: id, nombre, nombre cient, especie, precio
+
+			stmt.executeUpdate("INSERT INTO " + BDNombre + ".zoo_a VALUES (" + " 1, 'Cuervo', 'Corvus corax', 1, 400)");
+
+			stmt.executeUpdate(
+					"INSERT INTO " + BDNombre + ".zoo_a VALUES (" + " 2, 'Coyote', 'Canis latrans', 2, 1500)");
+
+			stmt.executeUpdate("INSERT INTO " + BDNombre + ".zoo_a VALUES ("
+					+ " 3, 'Cocodrilo del pantano', 'Crocodylus moreleti', 4, 6000)");
+
+			System.out.println("");
+			System.out.println("¡Se han agregado 3 animales a la tabla Zoo_a!");
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close();
+		}
+
+	}
+	
+
+	private static void insertarOrdenadores(Connection con, String BDNombre, String marca, String modelo,
+			String procesador, String tipoMemoria, int cantidadMemoria, String ubicacion, String numeroSerie)
+
+			throws SQLException {
+
+		Statement stmt = null;
+		
+		try {
+
+			stmt = con.createStatement();
+
+			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+			ResultSet rs = stmt.executeQuery("SELECT * FROM " + BDNombre + ".ordenadores" + "");
+
+			// Nos posicionamos con el cursor en la próxima fila vacía de la tabla
+
+			rs.moveToInsertRow();
+
+			// Actualizamos los campos con los datos pasados por parámetro en la llamada al
+			// método
+
+			rs.updateString("marca", marca);
+
+			rs.updateString("modelo", modelo);
+
+			rs.updateString("procesador", procesador);
+
+			rs.updateString("tipoMemoria", tipoMemoria);
+
+			rs.updateInt("cantidadMemoria", cantidadMemoria);
+
+			rs.updateString("ubicacion", ubicacion);
+
+			rs.updateString("numeroSerie", numeroSerie);
+
+			// Insertamos la nueva fila con los datos proporcionados
+
+			rs.insertRow();
+
+			// Nos posicionamos con el cursor antes de la primera fila
+
+			rs.beforeFirst();
+
+			System.out.println("");
+
+			System.out.println("Insertado correctamente.");
+
+		} catch (SQLException e) {
+
+			printSQLException(e);
+
+		} finally {
+
+			stmt.close();
+
+		}
+
 	}
 
 	private static void printSQLException(SQLException ex) {
