@@ -23,15 +23,15 @@ public class Main {
 
 			// CREAR BDD
 
-			// String sql = "CREATE DATABASE CentreCiutat";
-			// stmt.executeUpdate(sql);
-			// System.out.println("Base de datos creada con éxito.");
+			//String sql = "CREATE DATABASE CentreCiutat";
+			//stmt.executeUpdate(sql);
+			//System.out.println("Base de datos creada con éxito.");
 //			
 //
 //			crear tabla usuarios
-			// crearUsuarios(con, "centreciutat");
+			//crearUsuarios(con, "centreciutat");
 //			// crear estacionamiento
-			// crearEstacionamientos(con, "centreciutat");
+			//crearEstacionamientos(con, "centreciutat");
 //			
 //			// crear tabla inquilinos
 			// crearInquilinos(con, "centreciutat");
@@ -174,8 +174,8 @@ public class Main {
 								System.out.print("¿Que desea hacer?: ");
 								int opAdm = Adm.nextInt();
 
-								switch (opAdm) {
-								case 1:
+								switch (opAdm) {//TODO  SWICTH ADMIN
+								case 1://TODO AÑADIR NUEVOS ESTACIONAMIENTOS ADMIN
 									Scanner admInsert = new Scanner(System.in);
 
 									System.out.println("");
@@ -196,7 +196,7 @@ public class Main {
 									insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
 									break;
 
-								case 2:
+								case 2://TODO EDITAR ALQUILER ADMIN
 									// scanner
 									Scanner admEdit = new Scanner(System.in);
 									// cabezal
@@ -220,7 +220,7 @@ public class Main {
 
 									break;
 
-								case 3:
+								case 3://TODO ELIMINAR ALQUILER ADMIN
 									// scanner
 									Scanner admEli = new Scanner(System.in);
 
@@ -245,7 +245,7 @@ public class Main {
 									// llamada del metodo
 
 									break;
-								case 4:
+								case 4://TODO LISTAR ALQUILER ADMIN
 
 									Scanner admlistar = new Scanner(System.in);
 
@@ -261,16 +261,16 @@ public class Main {
 									listadoAlquileres(con, "centreciutat");
 
 									break;
-								case 5:
+								case 5://TODO CERRAR SESION ADMIN
 
 									System.out.println("");
-									System.out.println(" ===============================");
-									System.out.println(" == Saliendo del menu Adm v.1 ==");
-									System.out.println(" ===============================");
+									System.out.println(" ============================");
+									System.out.println(" == Cerrar sesion  Adm v.1 ==");
+									System.out.println(" ============================");
 									System.out.println("");
-									System.out.println("Saliste Correctamente");
 									salir = 5;
 									break;
+									
 								default:
 									System.out.println("");
 									System.out.println("No has puesto ninguna opcion permitida");
@@ -278,13 +278,13 @@ public class Main {
 							} // while admin cierre
 						} else {
 							int salir = 0;
-							while (salir != 3) {
-								Scanner Adm = new Scanner(System.in);
+							while (salir != 3) {//TODO while user
+								Scanner user = new Scanner(System.in);
 
 								System.out.println("");
-								System.out.println(" ======================================");
-								System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
-								System.out.println(" ======================================");
+								System.out.println(" ==========================================");
+								System.out.println(" == Bienvenido Usuario parking APP  v1.0 ==");
+								System.out.println(" ==========================================");
 								System.out.println("");
 
 								System.out.println("MENU:");
@@ -296,9 +296,9 @@ public class Main {
 								System.out.println("");
 
 								System.out.print("¿Que desea hacer?: ");
-								int opUser = Adm.nextInt();
+								int opUser = user.nextInt();
 								switch (opUser) {
-								case 1:
+								case 1://TODO buscar usuarios user
 									Scanner buscar = new Scanner(System.in);
 
 									System.out.println("");
@@ -315,7 +315,7 @@ public class Main {
 									busquedaUsuarios(con, "centreciutat", UserDNI);
 									break;
 
-								case 2:
+								case 2://TODO buscar vehiculos user
 									// scanner
 									Scanner matr = new Scanner(System.in);
 									// cabezal
@@ -333,14 +333,13 @@ public class Main {
 
 									break;
 
-								case 3:
+								case 3://TODO cerrar sesion user
 
 									System.out.println("");
-									System.out.println(" ==================================");
-									System.out.println(" == Saliendo del menu normal v.1 ==");
-									System.out.println(" ==================================");
+									System.out.println(" ===================================");
+									System.out.println(" == Cerrar sesion User normal v.1 ==");
+									System.out.println(" ===================================");
 									System.out.println("");
-									System.out.println("Saliste Correctamente");
 									salir = 3;
 									break;
 								default:
@@ -353,7 +352,7 @@ public class Main {
 						} // ciera el else
 					default:
 						System.out.println("");
-						System.out.println("No has puesto ninguna opcion permitida");
+						System.out.println("Noo has puesto ninguna opcion permitida");
 					}// cierre switch login
 				}
 
@@ -655,7 +654,7 @@ public class Main {
 	private static void listadoAlquileres(Connection con, String BDNombre) throws SQLException {
 
 		Statement stmt = null;
-		String query = "select * " + " from " + BDNombre + ".inquilino";
+		String query = "select * " + " from " + BDNombre + ".inquilinos";
 
 		try {
 
@@ -671,13 +670,13 @@ public class Main {
 				System.out.println("");
 				System.out.println("*************************************");
 
-				int dni_inquilino = rs.getInt(1);
+				String dni_inquilino = rs.getString(1);
 				System.out.println("Dni inquilino: " + dni_inquilino);
 
-				String matricula_vehiculo = rs.getString(2);
+				String matricula_vehiculo = rs.getString(6);
 				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
 
-				String codigo_estacionamiento = rs.getString(3);
+				String codigo_estacionamiento = rs.getString(7);
 				System.out.println("Codigo estacionamiento: " + codigo_estacionamiento);
 
 				System.out.println("*************************************");
@@ -742,8 +741,10 @@ public class Main {
 
 				System.out.println("");
 				System.out.println("*************************************");
-
-				int dni_inquilino = rs.getInt(1);
+				String nombre = rs.getString(1);
+				System.out.println("Nombre: " + nombre);
+				
+				String dni_inquilino = rs.getString(1);
 				System.out.println("Dni inquilino: " + dni_inquilino);
 
 				String matricula_vehiculo = rs.getString(2);
@@ -767,7 +768,7 @@ public class Main {
 	private static void busquedaVehiculos(Connection con, String BDNombre, String matricula) throws SQLException {
 
 		Statement stmt = null;
-		String query = "select * " + " from " + BDNombre + ".inquilino";
+		String query = "select * " + " from " + BDNombre + ".estacionamiento";
 
 		try {
 
@@ -776,14 +777,16 @@ public class Main {
 
 			// listados
 			System.out.println("");
-			System.out.println("**** Lista de Alquileres ****");
+			System.out.println("**** Busqueda de vehiculo ****");
 
 			while (rs.next()) {
 
 				System.out.println("");
 				System.out.println("*************************************");
-
-				int dni_inquilino = rs.getInt(1);
+				String nombre = rs.getString(1);
+				System.out.println("Nombre: " + nombre);
+				
+				String dni_inquilino = rs.getString(1);
 				System.out.println("Dni inquilino: " + dni_inquilino);
 
 				String matricula_vehiculo = rs.getString(2);
@@ -803,7 +806,27 @@ public class Main {
 		}
 
 	}
+	private static void login(Connection con, String BDNombre, String user) throws SQLException {
 
+		Statement stmt = null;
+		String query = "select * " + " from " + BDNombre + ".usuarios";
+
+		try {
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+
+			
+			
+			
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close();
+		}
+
+	}
 	private static void printSQLException(SQLException ex) {
 
 		ex.printStackTrace(System.err);
