@@ -82,7 +82,7 @@ public class Main {
 
 
 		     
-
+		     //Eric Prueba
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
 					// programa
 				System.out.println("");
