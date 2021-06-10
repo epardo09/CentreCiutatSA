@@ -19,70 +19,89 @@ public class Main {
 			// SI NO TENÉIS LA BASE DE DATOS CREADA, DESCOMENTAD ESTE TROZO DE CÓDIGO
 			// EJECUTAD EL ARCHIVO Y YA
 
-			
-//			  System.out.println("¡Conexión establecida!"); String sql =
-//			  "CREATE DATABASE CentreCiutat"; stmt.executeUpdate(sql);
-//			  System.out.println("Base de datos creada con éxito.");
+//			  System.out.println("¡Conexión establecida!");
+
+			// CREAR BDD
+
+			// String sql = "CREATE DATABASE CentreCiutat";
+			// stmt.executeUpdate(sql);
+			// System.out.println("Base de datos creada con éxito.");
 //			
 //
-//			System.out.println("¡Conexión establecida!");
-//			
-//			  sql = "CREATE DATABASE CentreCiutat"; stmt.executeUpdate(sql);
-//			 System.out.println("Base de datos creada con éxito.");
-//			
-//
-//			// crear tabla usuarios
-//			crearUsuarios(con, "centreciutat");
+//			crear tabla usuarios
+			// crearUsuarios(con, "centreciutat");
 //			// crear estacionamiento
-		//crearEstacionamientos(con, "centreciutat");
+			// crearEstacionamientos(con, "centreciutat");
 //			
 //			// crear tabla inquilinos
-//			crearInquilinos(con, "centreciutat");
-//			// crear vehiculos
-			//crearVehiculos(con, "centreciutat");
-			
-			//insertar usuarios
-			
-			//insertarUsuario(con, "centreciutat", "Carlos","2001");
-			//insertarUsuario(con, "centreciutat", "David","1999");
-			//insertarUsuario(con, "centreciutat", "Eric","1998");
-			
-			//insertar inquilinos
-
-
-			// System.out.println("¡Conexión establecida!");
-			
-			 // String sql = "CREATE DATABASE CentreCiutat"; stmt.executeUpdate(sql);
-			 // System.out.println("Base de datos creada con éxito.");
-			 
-
-//github.com/epardo09/CentreCiutatSA.git
-
-			
-			
-//		     insertarinquilino(con, "centreciutat", "43115892H","Carlos", "Medina","Calle falsa 123", "ES6621000418401234567891","BCD1234", "1A25","Carlos");
-//		     insertarinquilino(con, "centreciutat", "43365874I","Eric", "Pardo","Calle erronea 404", "ES6000491500051234567892","JSA1684", "1A27 ","Eric");
-//		     insertarinquilino(con, "centreciutat", "43223300K","David", "Quesada","Avenida incorrecta 7B", "ES9420805801101234567891","SAG7512", "1A30","David");
-//		     
-		      //insertar Estacionamientos
-		    // insertarEstacionamiento(con, "centreciutat", "1A25","S", 5,100, "43115892H");
-		   //  insertarEstacionamiento(con, "centreciutat", "1A27","S", 6,124.99, "43365874I");
-		   //  insertarEstacionamiento(con, "centreciutat", "1A30","S", 4,87, "43223300K");
-		     
-		     //insertar vehiculos
-		     insertarVehiculo(con, "centreciutat", "BCD1234","Ibiza", "Seat","Azul","Turismo", "43115892H");
-		     insertarVehiculo(con, "centreciutat", "JSA1684","Clio", "Renault","Blanco","Turismo", "43365874I");
-		     insertarVehiculo(con, "centreciutat", "SAG7512","SQ2", "Audi","Rojo","TodoTerreno", "43223300K");
-
-
-			// crear tabla inquilinos
 			// crearInquilinos(con, "centreciutat");
-			// crear vehiculos
-			 //crearVehiculos(con, "centreciutat");
+//			// crear vehiculos
+			// crearVehiculos(con, "centreciutat");
 
+			// insertar usuarios
 
-		     
-		     //Eric Prueba
+			// insertarUsuario(con, "centreciutat", "Carlos","2001", "s");
+			// insertarUsuario(con, "centreciutat", "Eric","1998", "s");
+			// insertarUsuario(con, "centreciutat", "David","1999", "s");
+			// insertarUsuario(con, "centreciutat", "Bryan","1998", "n");
+			// insertarUsuario(con, "centreciutat", "Bo","1995", "n");
+			// insertarUsuario(con, "centreciutat", "Andrea","1993", "n");
+			// insertarUsuario(con, "centreciutat", "Laura","1990", "n");
+			// insertarUsuario(con, "centreciutat", "Cinzia","1986", "n");
+			// insertarUsuario(con, "centreciutat", "Bernat","2002", "n");
+			// insertarUsuario(con, "centreciutat", "Jose","1982", "s");
+
+			// insertar inquilinos
+
+			// insertarInquilino(con, "centreciutat", "43115892H","Carlos", "Medina","Calle
+			// falsa 123", "ES6621000418401234567891","BCD1234", "1A25","Carlos");
+			// insertarInquilino(con, "centreciutat", "43365874I","Eric", "Pardo","Calle
+			// erronea 404", "ES6000491500051234567892","JSA1684", "1A27 ","Eric");
+			// insertarInquilino(con, "centreciutat", "43223300K","David",
+			// "Quesada","Avenida incorrecta 7B", "ES9420805801101234567891","SAG7512",
+			// "1A30","David");
+
+			// insertarInquilino(con, "centreciutat", "43845474K", "Bryan", "Tenorio",
+			// "Avenida del master 190", "ES6000491500051234561478", "PHP8000", null,
+			// "Bryan");
+			// insertarInquilino(con, "centreciutat", "43845474K", "Bo", "Cuellar", "Calle
+			// Churreria 42", "ES6000491500051234566325", "GPS2510", null, "Bo");
+			// insertarInquilino(con, "centreciutat", "43845474K", "Andrea", "Pousada",
+			// "Calle Python 39", "ES6000491500051234567894", "SUG3333", null, "Andrea");
+			// insertarInquilino(con, "centreciutat", "43845474K", "Laura", "Montenegro",
+			// "Calle quetuquieras 123", "ES6000491500051234567458", "ASD5476", null,
+			// "Laura");
+			// insertarInquilino(con, "centreciutat", "43845474K", "Cinzia", "Pikachu",
+			// "Calle macarroni 4 B", "ES6000491500051234560000", "ITL5555", null,
+			// "Cinzia");
+			// insertarInquilino(con, "centreciutat", "43845474K", "Bernat", "Coll", "Calle
+			// Melilla 123 ", "ES6000491500051234560123", "MRC6987", null, "Bernat");
+			// insertarInquilino(con, "centreciutat", "43845474K", "Jose", "Galvez",
+			// "Avenida Java 8", "ES6000491500051234569870", "ROB2671", null, "Jose");
+
+			// insertar Estacionamientos
+			// insertarEstacionamiento(con, "centreciutat", "1A25","s", 5,100, "43115892H");
+			// insertarEstacionamiento(con, "centreciutat", "1A27","s", 6,124.99,
+			// "43365874I");
+			// insertarEstacionamiento(con, "centreciutat", "1A30","s", 4,87, "43223300K");
+			// insertarEstacionamiento(con, "centreciutat", "1A20","n", 4,87, null);
+			// insertarEstacionamiento(con, "centreciutat", "1A21","n", 5,100, null);
+			// insertarEstacionamiento(con, "centreciutat", "1A22","n", 4,87, null);
+			// insertarEstacionamiento(con, "centreciutat", "1A23","n", 4,87, null);
+			// insertarEstacionamiento(con, "centreciutat", "1A24","n", 6,124.99, null);
+			// insertarEstacionamiento(con, "centreciutat", "1A26","n", 5,100, null);
+			// insertarEstacionamiento(con, "centreciutat", "1A28","n", 6,124.99, null);
+			// insertarEstacionamiento(con, "centreciutat", "1A29","n", 4,87, null);
+
+			// insertar vehiculos
+			// insertarVehiculo(con, "centreciutat", "BCD1234", "Ibiza", "Seat", "Azul",
+			// "Turismo", "43115892H");
+			// insertarVehiculo(con, "centreciutat", "JSA1684", "Clio", "Renault", "Blanco",
+			// "Turismo", "43365874I");
+			// insertarVehiculo(con, "centreciutat", "SAG7512", "SQ2", "Audi", "Rojo",
+			// "TodoTerreno", "43223300K");
+
+			// bucle
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
 					// programa
 				System.out.println("");
@@ -135,7 +154,7 @@ public class Main {
 							int salir = 0;
 							while (salir != 5) {
 								Scanner Adm = new Scanner(System.in);
-								
+
 								System.out.println("");
 								System.out.println(" ======================================");
 								System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
@@ -158,7 +177,7 @@ public class Main {
 								switch (opAdm) {
 								case 1:
 									Scanner admInsert = new Scanner(System.in);
-									
+
 									System.out.println("");
 									System.out.println(" ===============================================");
 									System.out.println(" == AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS ==");
@@ -172,21 +191,21 @@ public class Main {
 									System.out.println("Pon el estacionamiento que quieras añadir al usuario: ");
 									String UserEst = admInsert.next();
 									System.out.println("");
-									
+
 									// metodo
 									insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
-											break;
+									break;
 
 								case 2:
-									//scanner
+									// scanner
 									Scanner admEdit = new Scanner(System.in);
-									//cabezal
+									// cabezal
 									System.out.println("");
 									System.out.println(" =======================");
 									System.out.println(" == EDITAR ALQUILERES ==");
 									System.out.println(" =======================");
 									System.out.println("");
-									//pregunta con scaner
+									// pregunta con scaner
 									System.out.println("Pon el nombre del Usuario: ");
 									String editUser = admEdit.next();
 									System.out.println("Pon el dni: ");
@@ -194,26 +213,25 @@ public class Main {
 									System.out.println("Pon el estacionamiento que quieras editar al usuario: ");
 									String editEst = admEdit.next();
 
-									
 									// llamada del metodo
-									modificaAlquiler(con, "centreciutat", editUser, editDni,editEst);
+									modificaAlquiler(con, "centreciutat", editUser, editDni, editEst);
 
-									//llamada del metodo
+									// llamada del metodo
 
 									break;
 
 								case 3:
-									//scanner
+									// scanner
 									Scanner admEli = new Scanner(System.in);
-									
-									//cabezal
+
+									// cabezal
 									System.out.println("");
 									System.out.println(" =========================");
 									System.out.println(" == ELIMINAR ALQUILERES ==");
 									System.out.println(" =========================");
 									System.out.println("");
-									
-									//pregunta con scaner
+
+									// pregunta con scaner
 									System.out.println("Pon el nombre del Usuario: ");
 									String eliUser = admEli.next();
 									System.out.println("Pon el Dni del Usuario: ");
@@ -221,19 +239,17 @@ public class Main {
 									System.out.println("Pon el estacionamiento que quieras eliminar al usuario: ");
 									String eliEst = admEli.next();
 
-									
 									// llamada del metodo
 									eliminarAlquileres(con, "centreciutat", elidni, eliEst, eliUser);
 
-									//llamada del metodo
+									// llamada del metodo
 
 									break;
 								case 4:
 
 									Scanner admlistar = new Scanner(System.in);
-									
 
-									//cabezal
+									// cabezal
 
 									System.out.println("");
 									System.out.println(" =======================");
@@ -241,14 +257,12 @@ public class Main {
 									System.out.println(" =======================");
 									System.out.println("");
 
-
 									// llamada del metodo
 									listadoAlquileres(con, "centreciutat");
 
-									
 									break;
 								case 5:
-									
+
 									System.out.println("");
 									System.out.println(" ===============================");
 									System.out.println(" == Saliendo del menu Adm v.1 ==");
@@ -260,13 +274,13 @@ public class Main {
 								default:
 									System.out.println("");
 									System.out.println("No has puesto ninguna opcion permitida");
-								}//switch admin cierre
-							}//while admin cierre
+								}// switch admin cierre
+							} // while admin cierre
 						} else {
 							int salir = 0;
 							while (salir != 3) {
 								Scanner Adm = new Scanner(System.in);
-								
+
 								System.out.println("");
 								System.out.println(" ======================================");
 								System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
@@ -283,70 +297,67 @@ public class Main {
 
 								System.out.print("¿Que desea hacer?: ");
 								int opUser = Adm.nextInt();
-							switch (opUser) {
-							case 1:
-								Scanner buscar = new Scanner(System.in);
-								
-								System.out.println("");
-								System.out.println(" =====================");
-								System.out.println(" == BUSCAR USUARIOS ==");
-								System.out.println(" =====================");
-								System.out.println("");
+								switch (opUser) {
+								case 1:
+									Scanner buscar = new Scanner(System.in);
 
-								System.out.println("Pon el dni del Usuario que quieres buscar: ");
-								String UserDNI= buscar.next();
-								System.out.println("");
-								
-								//llamada del metodo BuscarUSUARIO
-								busquedaUsuarios(con, "centreciutat", UserDNI);
-								break;
+									System.out.println("");
+									System.out.println(" =====================");
+									System.out.println(" == BUSCAR USUARIOS ==");
+									System.out.println(" =====================");
+									System.out.println("");
 
-							case 2:
-								//scanner
-								Scanner matr = new Scanner(System.in);
-								//cabezal
-								System.out.println("");
-								System.out.println(" ======================");
-								System.out.println(" == BUSCAR VEHICULOS ==");
-								System.out.println(" ======================");
-								System.out.println("");
-								//pregunta con scaner
-								System.out.println("Pon el matricula del vehiculo: ");
-								String BuscarMatr = matr.next();
-								busquedaVehiculos(con, "centreciutat", BuscarMatr);
-						
-								//llamada del metodo BuscarVEHICULO
-								
-								break;							
-								
-							case 3:
-								
-								System.out.println("");
-								System.out.println(" ==================================");
-								System.out.println(" == Saliendo del menu normal v.1 ==");
-								System.out.println(" ==================================");
-								System.out.println("");
-								System.out.println("Saliste Correctamente");
-								salir=3;
-								break;
-							default:
-								System.out.println("");
-								System.out.println("No has puesto ninguna opcion permitida");
-						}//cierre swicth user
-						
-						
-							
-						}//ciera el while del user normal 
+									System.out.println("Pon el dni del Usuario que quieres buscar: ");
+									String UserDNI = buscar.next();
+									System.out.println("");
 
-					}//ciera el else
+									// llamada del metodo BuscarUSUARIO
+									busquedaUsuarios(con, "centreciutat", UserDNI);
+									break;
+
+								case 2:
+									// scanner
+									Scanner matr = new Scanner(System.in);
+									// cabezal
+									System.out.println("");
+									System.out.println(" ======================");
+									System.out.println(" == BUSCAR VEHICULOS ==");
+									System.out.println(" ======================");
+									System.out.println("");
+									// pregunta con scaner
+									System.out.println("Pon el matricula del vehiculo: ");
+									String BuscarMatr = matr.next();
+									busquedaVehiculos(con, "centreciutat", BuscarMatr);
+
+									// llamada del metodo BuscarVEHICULO
+
+									break;
+
+								case 3:
+
+									System.out.println("");
+									System.out.println(" ==================================");
+									System.out.println(" == Saliendo del menu normal v.1 ==");
+									System.out.println(" ==================================");
+									System.out.println("");
+									System.out.println("Saliste Correctamente");
+									salir = 3;
+									break;
+								default:
+									System.out.println("");
+									System.out.println("No has puesto ninguna opcion permitida");
+								}// cierre swicth user
+
+							} // ciera el while del user normal
+
+						} // ciera el else
 					default:
 						System.out.println("");
 						System.out.println("No has puesto ninguna opcion permitida");
-						}//cierre switch login
+					}// cierre switch login
 				}
-			
-				
-			}//cierre del DO
+
+			} // cierre del DO
 			while (salida != true);
 
 		} catch (
@@ -360,7 +371,7 @@ public class Main {
 	private static void crearUsuarios(Connection connection, String BDNombre) throws SQLException {
 
 		String createString = "create table " + BDNombre + ".usuarios" + "(user varchar(50) NOT NULL,"
-				+ "password varchar(50) NOT NULL, PRIMARY KEY (user))";
+				+ "password varchar(50) NOT NULL, admin varchar(1) NOT NULL, PRIMARY KEY (user))";
 
 		Statement stmt = null;
 
@@ -382,9 +393,10 @@ public class Main {
 	private static void crearInquilinos(Connection connection, String BDNombre) throws SQLException {
 		String createString = "create table " + BDNombre + ".inquilinos" + "(dni_inquilino varchar(10) NOT NULL,"
 				+ "nombre varchar(25) NOT NULL, apellidos varchar(50), direccion varchar(25),"
-				+ " cuenta_corriente varchar(50), matricula_vehiculo varchar(7), codigo_estacionamiento int, user varchar(50),"
+				+ " cuenta_corriente varchar(50), matricula_vehiculo varchar(7), codigo_estacionamiento varchar(4), user varchar(50),"
 				+ " PRIMARY KEY (dni_inquilino),"
-				+ " FOREIGN KEY (user) REFERENCES usuarios(user), FOREIGN KEY (matricula_vehiculo) REFERENCES vehiculos(matricula_vehiculo))";
+				+ " FOREIGN KEY (user) REFERENCES usuarios(user), FOREIGN KEY (matricula_vehiculo) REFERENCES vehiculos(matricula_vehiculo),"
+				+ "FOREIGN KEY (codigo_estacionamiento) REFERENCES estacionamiento (codigo_estacionamiento))";
 
 		Statement stmt = null;
 
@@ -403,7 +415,8 @@ public class Main {
 	}
 
 	private static void crearEstacionamientos(Connection connection, String BDNombre) throws SQLException {
-		String createString = "create table " + BDNombre + ".estacionamiento" + "(codigo_estacionamiento int NOT NULL, alquilado varchar(1),"
+		String createString = "create table " + BDNombre + ".estacionamiento"
+				+ "(codigo_estacionamiento varchar(4) NOT NULL, alquilado varchar(1),"
 				+ " m2 int, precio_mensual decimal, dni_inquilino varchar(10),"
 				+ " PRIMARY KEY (codigo_estacionamiento),"
 				+ " FOREIGN KEY (dni_inquilino) REFERENCES inquilinos(dni_inquilino))";
@@ -423,11 +436,11 @@ public class Main {
 			stmt.close(); // Cerramos la conexión
 		}
 	}
-	
+
 	private static void crearVehiculos(Connection connection, String BDNombre) throws SQLException {
-		String createString = "create table " + BDNombre + ".vehiculos" + "(matricula_vehiculo varchar(7) NOT NULL, modelo varchar(20),"
-				+ " marca varchar(25), color varchar(25),"
-				+ " tipoVehiculo varchar(25), dni_inquilino varchar(10),"
+		String createString = "create table " + BDNombre + ".vehiculos"
+				+ "(matricula_vehiculo varchar(7) NOT NULL, modelo varchar(20),"
+				+ " marca varchar(25), color varchar(25)," + " tipoVehiculo varchar(25), dni_inquilino varchar(10),"
 				+ " PRIMARY KEY (matricula_vehiculo),"
 				+ " FOREIGN KEY (dni_inquilino) REFERENCES inquilinos(dni_inquilino))";
 
@@ -446,9 +459,8 @@ public class Main {
 			stmt.close(); // Cerramos la conexión
 		}
 	}
-	
 
-	private static void insertarUsuario(Connection connection, String BDNombre, String user, String password) 
+	private static void insertarUsuario(Connection connection, String BDNombre, String user, String password, String admin)
 			throws SQLException {
 
 		Statement stmt = null;
@@ -460,18 +472,17 @@ public class Main {
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM " + BDNombre + ".usuarios");
 
-			
 			rs.moveToInsertRow();
-	
-			
+
 			rs.updateString("user", user);
-			rs.updateString("password",password);
+			rs.updateString("password", password);
+			rs.updateString("admin", admin);
 
 			rs.insertRow();
 			rs.beforeFirst();
 
 			System.out.println("");
-			System.out.println("Se ha insertado correctamente el nuevo usuario " + user +  " en la tabla usuaios!");
+			System.out.println("Se ha insertado correctamente el nuevo usuario " + user + " en la tabla usuaios!");
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -481,13 +492,8 @@ public class Main {
 
 	}
 
-	
-
-
-
-	private static void insertarEstacionamiento(Connection connection, String BDNombre, String codigo_estacionamiento, String alquilado, int m2, double precio_mensual, String dni_inquilino) 
-
-			throws SQLException {
+	private static void insertarEstacionamiento(Connection connection, String BDNombre, String codigo_estacionamiento,
+			String alquilado, int m2, double precio_mensual, String dni_inquilino) throws SQLException {
 
 		Statement stmt = null;
 
@@ -498,26 +504,20 @@ public class Main {
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM " + BDNombre + ".estacionamiento");
 
-
-			// Nos posicionamos con el cursor en la próxima fila vacía de la tabla
 			rs.moveToInsertRow();
 
-
-			// Insertamos la nueva fila con los datos proporcionados
-		
 			rs.updateString("codigo_estacionamiento", codigo_estacionamiento);
-			rs.updateString("alquilado",alquilado);
+			rs.updateString("alquilado", alquilado);
 			rs.updateInt("m2", m2);
-			rs.updateDouble("precio_mensual",precio_mensual);	
-			rs.updateString("dni_inquilino",dni_inquilino);
-			
+			rs.updateDouble("precio_mensual", precio_mensual);
+			rs.updateString("dni_inquilino", dni_inquilino);
+
 			rs.insertRow();
 			rs.beforeFirst();
 
 			System.out.println("");
-
-			System.out.println("Se ha insertado correctamente el nuevo estacionamiento " + codigo_estacionamiento +  " en la tabla estacionamiento!");
-
+			System.out.println("Se ha insertado correctamente el nuevo estacionamiento " + codigo_estacionamiento
+					+ " en la tabla estacionamiento!");
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -527,8 +527,8 @@ public class Main {
 
 	}
 
-	private static void insertarVehiculo(Connection connection, String BDNombre, String matricula_vehiculo, String modelo, String marca, String color, String tipoVehiculo,  String dni_inquilino) 
-			throws SQLException {
+	private static void insertarVehiculo(Connection connection, String BDNombre, String matricula_vehiculo,
+			String modelo, String marca, String color, String tipoVehiculo, String dni_inquilino) throws SQLException {
 
 		Statement stmt = null;
 
@@ -539,24 +539,21 @@ public class Main {
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM " + BDNombre + ".vehiculos");
 
-			
 			rs.moveToInsertRow();
-	
-			
-		
+
 			rs.updateString("matricula_vehiculo", matricula_vehiculo);
 			rs.updateString("modelo", modelo);
-			rs.updateString("marca",marca);
+			rs.updateString("marca", marca);
 			rs.updateString("color", color);
-			rs.updateString("tipoVehiculo",tipoVehiculo);	
-			rs.updateString("dni_inquilino",dni_inquilino);
-			
-			
+			rs.updateString("tipoVehiculo", tipoVehiculo);
+			rs.updateString("dni_inquilino", dni_inquilino);
+
 			rs.insertRow();
 			rs.beforeFirst();
 
 			System.out.println("");
-			System.out.println("Se ha insertado correctamente el nuevo vehiculos " + matricula_vehiculo +  " en la tabla inquilinos!");
+			System.out.println("Se ha insertado correctamente el nuevo vehiculos " + matricula_vehiculo
+					+ " en la tabla inquilinos!");
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -565,8 +562,10 @@ public class Main {
 		}
 
 	}
-	private static void insertarinquilino(Connection connection, String BDNombre, String dni_inquilino, String nombre, String apellidos, String direccion, String cuenta_corriente,  String matricula_vehiculo,  String codigo_estacionamiento,  String user) 
-			throws SQLException {
+
+	private static void insertarInquilino(Connection connection, String BDNombre, String dni_inquilino, String nombre,
+			String apellidos, String direccion, String cuenta_corriente, String matricula_vehiculo,
+			String codigo_estacionamiento, String user) throws SQLException {
 
 		Statement stmt = null;
 
@@ -577,25 +576,23 @@ public class Main {
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM " + BDNombre + ".inquilinos");
 
-			
 			rs.moveToInsertRow();
-	
-			
-		
-			rs.updateString("dni_inquilino",dni_inquilino);
+
+			rs.updateString("dni_inquilino", dni_inquilino);
 			rs.updateString("nombre", nombre);
-			rs.updateString("apellidos",apellidos);
+			rs.updateString("apellidos", apellidos);
 			rs.updateString("direccion", direccion);
-			rs.updateString("cuenta_corriente",cuenta_corriente);	
-			rs.updateString("matricula_vehiculo",matricula_vehiculo);
-			rs.updateString("codigo_estacionamiento", codigo_estacionamiento);		
+			rs.updateString("cuenta_corriente", cuenta_corriente);
+			rs.updateString("matricula_vehiculo", matricula_vehiculo);
+			rs.updateString("codigo_estacionamiento", codigo_estacionamiento);
 			rs.updateString("user", user);
-			
+
 			rs.insertRow();
 			rs.beforeFirst();
 
 			System.out.println("");
-			System.out.println("Se ha insertado correctamente el nuevo inquilino " + dni_inquilino +  " en la tabla inquilinos!");
+			System.out.println(
+					"Se ha insertado correctamente el nuevo inquilino " + dni_inquilino + " en la tabla inquilinos!");
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -604,18 +601,21 @@ public class Main {
 		}
 
 	}
-	// Modificar la BBDD 
-	private static void modificaAlquiler(Connection con, String BDNombre,String usuario, String dni,String estacionamiento) throws SQLException {
+
+	// Modificar la BBDD
+	private static void modificaAlquiler(Connection con, String BDNombre, String usuario, String dni,
+			String estacionamiento) throws SQLException {
 
 		Statement stmt = null;
 
 		try {
-			//modificaAlquiler(con, "centreciutat", editUser, editDni,editEst);
+			// modificaAlquiler(con, "centreciutat", editUser, editDni,editEst);
 			stmt = con.createStatement();
-			stmt.executeUpdate("UPDATE " + BDNombre + ".estacionamiento SET codigo_estacionamiento = "+"'"+ estacionamiento +"'"+ " where dni_inquilino = "+dni);
+			stmt.executeUpdate("UPDATE " + BDNombre + ".estacionamiento SET codigo_estacionamiento = " + "'"
+					+ estacionamiento + "'" + " where dni_inquilino = " + dni);
 
 			System.out.println("");
-			System.out.println("Se ha modificado el estacionamiento: "+estacionamiento+" del usuario: "+usuario);
+			System.out.println("Se ha modificado el estacionamiento: " + estacionamiento + " del usuario: " + usuario);
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -624,13 +624,15 @@ public class Main {
 		}
 
 	}
-	private static void eliminarAlquileres(Connection con, String BDNombre, String dni, String CodEst,String usuario) throws SQLException {
 
-		 
-		String eliminarfila= "DELETE FROM "+ BDNombre+ ".estacionamiento "+ "WHERE  numeroInterno= "+dni;
-		
+	private static void eliminarAlquileres(Connection con, String BDNombre, String dni, String CodEst, String usuario)
+			throws SQLException {
+
+		String eliminarfila = "DELETE FROM " + BDNombre + ".estacionamiento " + "WHERE  numeroInterno= " + dni;
+
 		Statement stmt = null;
-		stmt.executeUpdate("UPDATE + BDNombre .estacionamiento set alquilado = 'N' where codigo_estacionamiento = CodEst");
+		stmt.executeUpdate(
+				"UPDATE + BDNombre .estacionamiento set alquilado = 'N' where codigo_estacionamiento = CodEst");
 		try {
 
 			stmt = con.createStatement();
@@ -639,7 +641,8 @@ public class Main {
 
 			// mensaje para que sepa que a ido todo bien
 			System.out.println("");
-			System.out.println("se a eliminado correctamente el alquiler del usuario:  "+usuario+ " de la tabla ordenadores");
+			System.out.println(
+					"se a eliminado correctamente el alquiler del usuario:  " + usuario + " de la tabla ordenadores");
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -648,6 +651,7 @@ public class Main {
 		}
 
 	}
+
 	private static void listadoAlquileres(Connection con, String BDNombre) throws SQLException {
 
 		Statement stmt = null;
@@ -657,8 +661,8 @@ public class Main {
 
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			
-			//listados
+
+			// listados
 			System.out.println("");
 			System.out.println("**** Lista de Alquileres ****");
 
@@ -669,17 +673,15 @@ public class Main {
 
 				int dni_inquilino = rs.getInt(1);
 				System.out.println("Dni inquilino: " + dni_inquilino);
-				
+
 				String matricula_vehiculo = rs.getString(2);
 				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
-				
+
 				String codigo_estacionamiento = rs.getString(3);
 				System.out.println("Codigo estacionamiento: " + codigo_estacionamiento);
-				
+
 				System.out.println("*************************************");
-				
-			
-				 
+
 			}
 
 		} catch (SQLException e) {
@@ -689,8 +691,9 @@ public class Main {
 		}
 
 	}
-	private static void insertarUsuariosEstacionamientos(Connection connection, String BDNombre,  String user, String dni, String esta) 
-			throws SQLException {
+
+	private static void insertarUsuariosEstacionamientos(Connection connection, String BDNombre, String user,
+			String dni, String esta) throws SQLException {
 
 		Statement stmt = null;
 
@@ -701,19 +704,17 @@ public class Main {
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM " + BDNombre + ".estacionamiento");
 
-			
 			rs.moveToInsertRow();
-			//donde se guardara los valores de las preguntas
+			// donde se guardara los valores de las preguntas
 			rs.updateString("Dni del usuario: ", dni);
 			rs.updateString("Estacionamiento: ", esta);
-			
-			
 
 			rs.insertRow();
 			rs.beforeFirst();
 
-			System.out.println("");//mensaje de que todo a ido bien
-			System.out.println("Se ha insertado correctamente el nuevo estacionamiento: "+esta+" al  usuario: " + user );
+			System.out.println("");// mensaje de que todo a ido bien
+			System.out.println(
+					"Se ha insertado correctamente el nuevo estacionamiento: " + esta + " al  usuario: " + user);
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -722,7 +723,8 @@ public class Main {
 		}
 
 	}
-	private static void busquedaUsuarios(Connection con, String BDNombre,String dni) throws SQLException {
+
+	private static void busquedaUsuarios(Connection con, String BDNombre, String dni) throws SQLException {
 
 		Statement stmt = null;
 		String query = "select * " + " from " + BDNombre + ".inquilino";
@@ -731,8 +733,8 @@ public class Main {
 
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			
-			//listados
+
+			// listados
 			System.out.println("");
 			System.out.println("**** Busqueda de Usuario ****");
 
@@ -743,17 +745,15 @@ public class Main {
 
 				int dni_inquilino = rs.getInt(1);
 				System.out.println("Dni inquilino: " + dni_inquilino);
-				
+
 				String matricula_vehiculo = rs.getString(2);
 				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
-				
+
 				String codigo_estacionamiento = rs.getString(3);
 				System.out.println("Codigo estacionamiento: " + codigo_estacionamiento);
-				
+
 				System.out.println("*************************************");
-				
-			
-				 
+
 			}
 
 		} catch (SQLException e) {
@@ -763,7 +763,8 @@ public class Main {
 		}
 
 	}
-	private static void busquedaVehiculos(Connection con, String BDNombre,String matricula) throws SQLException {
+
+	private static void busquedaVehiculos(Connection con, String BDNombre, String matricula) throws SQLException {
 
 		Statement stmt = null;
 		String query = "select * " + " from " + BDNombre + ".inquilino";
@@ -772,8 +773,8 @@ public class Main {
 
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			
-			//listados
+
+			// listados
 			System.out.println("");
 			System.out.println("**** Lista de Alquileres ****");
 
@@ -784,17 +785,15 @@ public class Main {
 
 				int dni_inquilino = rs.getInt(1);
 				System.out.println("Dni inquilino: " + dni_inquilino);
-				
+
 				String matricula_vehiculo = rs.getString(2);
 				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
-				
+
 				String codigo_estacionamiento = rs.getString(3);
 				System.out.println("Codigo estacionamiento: " + codigo_estacionamiento);
-				
+
 				System.out.println("*************************************");
-				
-			
-				 
+
 			}
 
 		} catch (SQLException e) {
@@ -804,7 +803,7 @@ public class Main {
 		}
 
 	}
-	
+
 	private static void printSQLException(SQLException ex) {
 
 		ex.printStackTrace(System.err);
