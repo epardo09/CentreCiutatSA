@@ -255,24 +255,42 @@ public class Main {
 									System.out.println(" ===============================");
 									System.out.println("");
 									System.out.println("Saliste Correctamente");
-									i = 2;
+									salir = 5;
 									break;
 								default:
 									System.out.println("");
 									System.out.println("No has puesto ninguna opcion permitida");
-								}
-							}
+								}//switch admin cierre
+							}//while admin cierre
 						} else {
-							Scanner Norm = new Scanner(System.in);
-							int normal = Norm.nextInt();
-							switch (normal) {
+							int salir = 0;
+							while (salir != 3) {
+								Scanner Adm = new Scanner(System.in);
+								
+								System.out.println("");
+								System.out.println(" ======================================");
+								System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
+								System.out.println(" ======================================");
+								System.out.println("");
+
+								System.out.println("MENU:");
+								System.out.println("");
+
+								System.out.println("1) BUSCAR USUARIOS");
+								System.out.println("2) BUSCAR VEHICULOS");
+								System.out.println("5) SALIR AL INICIO");
+								System.out.println("");
+
+								System.out.print("¿Que desea hacer?: ");
+								int opUser = Adm.nextInt();
+							switch (opUser) {
 							case 1:
 								Scanner buscar = new Scanner(System.in);
 								
 								System.out.println("");
-								System.out.println(" ===============================================");
+								System.out.println(" =====================");
 								System.out.println(" == BUSCAR USUARIOS ==");
-								System.out.println(" ===============================================");
+								System.out.println(" =====================");
 								System.out.println("");
 
 								System.out.println("Pon el dni del Usuario que quieres buscar: ");
@@ -280,6 +298,7 @@ public class Main {
 								System.out.println("");
 								
 								//llamada del metodo BuscarUSUARIO
+								busquedaUsuarios(con, "centreciutat", UserDNI);
 								break;
 
 							case 2:
@@ -287,41 +306,48 @@ public class Main {
 								Scanner matr = new Scanner(System.in);
 								//cabezal
 								System.out.println("");
-								System.out.println(" =======================");
+								System.out.println(" ======================");
 								System.out.println(" == BUSCAR VEHICULOS ==");
-								System.out.println(" =======================");
+								System.out.println(" ======================");
 								System.out.println("");
 								//pregunta con scaner
 								System.out.println("Pon el matricula del vehiculo: ");
 								String BuscarMatr = matr.next();
+								busquedaVehiculos(con, "centreciutat", BuscarMatr);
 						
 								//llamada del metodo BuscarVEHICULO
+								
 								break;							
 								
 							case 3:
 								
 								System.out.println("");
-								System.out.println(" ===============================");
+								System.out.println(" ==================================");
 								System.out.println(" == Saliendo del menu normal v.1 ==");
-								System.out.println(" ===============================");
+								System.out.println(" ==================================");
 								System.out.println("");
 								System.out.println("Saliste Correctamente");
-								i = 2;
+								salir=3;
 								break;
 							default:
-						}
-						}
-						break;
+								System.out.println("");
+								System.out.println("No has puesto ninguna opcion permitida");
+						}//cierre swicth user
+						
+						
+							
+						}//ciera el while del user normal 
 
+					}//ciera el else
 					default:
 						System.out.println("");
 						System.out.println("No has puesto ninguna opcion permitida");
-
-						// admin
-
-					}
+						}//cierre switch login
 				}
-			} while (salida != true);
+			
+				
+			}//cierre del DO
+			while (salida != true);
 
 		} catch (
 
@@ -663,7 +689,7 @@ public class Main {
 		}
 
 	}
-	private static void insertarUsuariosEstacionamientos(Connection connection, String BDNombre, int numeroInterno, String marca, String modelo, String procesador, String tipoMemoria, int cantidadMemoria, String ubicacion, int numeroSerie) 
+	private static void insertarUsuariosEstacionamientos(Connection connection, String BDNombre,  String user, String dni, String esta) 
 			throws SQLException {
 
 		Statement stmt = null;
@@ -678,21 +704,98 @@ public class Main {
 			
 			rs.moveToInsertRow();
 			//donde se guardara los valores de las preguntas
-			rs.updateInt("numeroInterno", numeroInterno);
-			rs.updateString("marca", marca);
-			rs.updateString("modelo", modelo);
-			rs.updateString("procesador", procesador);
-			rs.updateString("tipoMemoria", tipoMemoria);
-			rs.updateInt("cantidadMemoria", cantidadMemoria);
-			rs.updateString("ubicacion", ubicacion);
-			rs.updateInt("numeroSerie", numeroSerie);
+			rs.updateString("Dni del usuario: ", dni);
+			rs.updateString("Estacionamiento: ", esta);
+			
 			
 
 			rs.insertRow();
 			rs.beforeFirst();
 
 			System.out.println("");//mensaje de que todo a ido bien
-			System.out.println("Se ha creado correctamente el nuevo ordenador con el numero interno '" + numeroInterno +  "' en la tabla ordenadores!");
+			System.out.println("Se ha insertado correctamente el nuevo estacionamiento: "+esta+" al  usuario: " + user );
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close();
+		}
+
+	}
+	private static void busquedaUsuarios(Connection con, String BDNombre,String dni) throws SQLException {
+
+		Statement stmt = null;
+		String query = "select * " + " from " + BDNombre + ".inquilino";
+
+		try {
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			//listados
+			System.out.println("");
+			System.out.println("**** Busqueda de Usuario ****");
+
+			while (rs.next()) {
+
+				System.out.println("");
+				System.out.println("*************************************");
+
+				int dni_inquilino = rs.getInt(1);
+				System.out.println("Dni inquilino: " + dni_inquilino);
+				
+				String matricula_vehiculo = rs.getString(2);
+				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
+				
+				String codigo_estacionamiento = rs.getString(3);
+				System.out.println("Codigo estacionamiento: " + codigo_estacionamiento);
+				
+				System.out.println("*************************************");
+				
+			
+				 
+			}
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		} finally {
+			stmt.close();
+		}
+
+	}
+	private static void busquedaVehiculos(Connection con, String BDNombre,String matricula) throws SQLException {
+
+		Statement stmt = null;
+		String query = "select * " + " from " + BDNombre + ".inquilino";
+
+		try {
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+			//listados
+			System.out.println("");
+			System.out.println("**** Lista de Alquileres ****");
+
+			while (rs.next()) {
+
+				System.out.println("");
+				System.out.println("*************************************");
+
+				int dni_inquilino = rs.getInt(1);
+				System.out.println("Dni inquilino: " + dni_inquilino);
+				
+				String matricula_vehiculo = rs.getString(2);
+				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
+				
+				String codigo_estacionamiento = rs.getString(3);
+				System.out.println("Codigo estacionamiento: " + codigo_estacionamiento);
+				
+				System.out.println("*************************************");
+				
+			
+				 
+			}
 
 		} catch (SQLException e) {
 			printSQLException(e);
