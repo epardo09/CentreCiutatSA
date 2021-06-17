@@ -137,7 +137,7 @@ public class Main {
 					// el int i y la condicion son para que no de error
 
 					int i = 0;
-					if () {// metodo verUser
+					if (i!=2) {// metodo verUser
 						// admin
 						int salir = 0;
 						while (salir != 5) {
@@ -834,6 +834,7 @@ public class Main {
 				System.out.println("Sesión iniciada.");
 			} else {
 				System.out.println("Inicio de sesión fallido, intentelo de nuevo mas tarde.");
+				System.exit(0);
 			}
 
 		} catch (SQLException e) {
