@@ -7,7 +7,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
 		boolean salida = false;
 
 		// conexión al servidor
@@ -23,15 +22,15 @@ public class Main {
 
 			// CREAR BDD
 
-			//String sql = "CREATE DATABASE CentreCiutat";
-			//stmt.executeUpdate(sql);
-			//System.out.println("Base de datos creada con éxito.");
+			// String sql = "CREATE DATABASE CentreCiutat";
+			// stmt.executeUpdate(sql);
+			// System.out.println("Base de datos creada con éxito.");
 //			
 //
 //			crear tabla usuarios
-			//crearUsuarios(con, "centreciutat");
+			// crearUsuarios(con, "centreciutat");
 //			// crear estacionamiento
-			//crearEstacionamientos(con, "centreciutat");
+			// crearEstacionamientos(con, "centreciutat");
 //			
 //			// crear tabla inquilinos
 			// crearInquilinos(con, "centreciutat");
@@ -120,9 +119,227 @@ public class Main {
 				System.out.print("¿Que desea hacer?: ");
 
 				int op = sc.nextInt();
-				if (op == 2) {// Aquí comparo el valor de usuario que ha dado si es true saldrá del programa,
-								// si
-								// nos pasara al else
+
+				switch (op) {
+				case 1:
+					Scanner login = new Scanner(System.in);
+
+					// usuario
+					System.out.println("Usuario: ");
+					String user = login.next();
+					System.out.println("");
+					// contraseña
+					System.out.println("Contraseña: ");
+					String pass = login.next();
+					System.out.println("");
+					inicioSesion(con, "centreciutat", user, pass);
+					
+					// el int i y la condicion son para que no de error
+
+					int i = 0;
+					if () {// metodo verUser
+						// admin
+						int salir = 0;
+						while (salir != 5) {
+							Scanner Adm = new Scanner(System.in);
+
+							System.out.println("");
+							System.out.println(" ======================================");
+							System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
+							System.out.println(" ======================================");
+							System.out.println("");
+
+							System.out.println("MENU:");
+							System.out.println("");
+
+							System.out.println("1) AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS");
+							System.out.println("2) EDITAR ALQUILERES");
+							System.out.println("3) ELIMINAR ALQUILERES");
+							System.out.println("4) LISTAR ALQUILERES");
+							System.out.println("5) SALIR AL INICIO");
+							System.out.println("");
+
+							System.out.print("¿Que desea hacer?: ");
+							int opAdm = Adm.nextInt();
+
+							switch (opAdm) {// TODO SWICTH ADMIN
+							case 1:// TODO AÑADIR NUEVOS ESTACIONAMIENTOS ADMIN
+								Scanner admInsert = new Scanner(System.in);
+
+								System.out.println("");
+								System.out.println(" ===============================================");
+								System.out.println(" == AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS ==");
+								System.out.println(" ===============================================");
+								System.out.println("");
+
+								System.out.println("Pon el nombre del Usuario: ");
+								String UserN = admInsert.next();
+								System.out.println("Pon el dni: ");
+								String UserDni = admInsert.next();
+								System.out.println("Pon el estacionamiento que quieras añadir al usuario: ");
+								String UserEst = admInsert.next();
+								System.out.println("");
+
+								// metodo
+								insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
+								break;
+
+							case 2:// TODO EDITAR ALQUILER ADMIN
+									// scanner
+								Scanner admEdit = new Scanner(System.in);
+								// cabezal
+								System.out.println("");
+								System.out.println(" =======================");
+								System.out.println(" == EDITAR ALQUILERES ==");
+								System.out.println(" =======================");
+								System.out.println("");
+								// pregunta con scaner
+								System.out.println("Pon el nombre del Usuario: ");
+								String editUser = admEdit.next();
+								System.out.println("Pon el dni: ");
+								String editDni = admEdit.next();
+								System.out.println("Pon el estacionamiento que quieras editar al usuario: ");
+								String editEst = admEdit.next();
+
+								// llamada del metodo
+								modificaAlquiler(con, "centreciutat", editUser, editDni, editEst);
+
+								// llamada del metodo
+
+								break;
+
+							case 3:// TODO ELIMINAR ALQUILER ADMIN
+									// scanner
+								Scanner admEli = new Scanner(System.in);
+
+								// cabezal
+								System.out.println("");
+								System.out.println(" =========================");
+								System.out.println(" == ELIMINAR ALQUILERES ==");
+								System.out.println(" =========================");
+								System.out.println("");
+
+								// pregunta con scaner
+								System.out.println("Pon el nombre del Usuario: ");
+								String eliUser = admEli.next();
+								System.out.println("Pon el Dni del Usuario: ");
+								String elidni = admEli.next();
+								System.out.println("Pon el estacionamiento que quieras eliminar al usuario: ");
+								String eliEst = admEli.next();
+
+								// llamada del metodo
+								eliminarAlquileres(con, "centreciutat", elidni, eliEst, eliUser);
+
+								// llamada del metodo
+
+								break;
+							case 4:// TODO LISTAR ALQUILER ADMIN
+
+								Scanner admlistar = new Scanner(System.in);
+
+								// cabezal
+
+								System.out.println("");
+								System.out.println(" =======================");
+								System.out.println(" == LISTAR ALQUILERES ==");
+								System.out.println(" =======================");
+								System.out.println("");
+
+								// llamada del metodo
+								listadoAlquileres(con, "centreciutat");
+
+								break;
+							case 5:// TODO CERRAR SESION ADMIN
+
+								System.out.println("");
+								System.out.println(" ============================");
+								System.out.println(" == Cerrar sesion  Adm v.1 ==");
+								System.out.println(" ============================");
+								System.out.println("");
+								salir = 5;
+								break;
+
+							default:
+								System.out.println("");
+								System.out.println("No has puesto ninguna opcion permitida");
+							}// switch admin cierre
+						} // while admin cierre
+					} else {
+						int salir = 0;
+						while (salir != 3) {// TODO while user
+							Scanner userMenu = new Scanner(System.in);
+
+							System.out.println("");
+							System.out.println(" ==========================================");
+							System.out.println(" == Bienvenido Usuario parking APP  v1.0 ==");
+							System.out.println(" ==========================================");
+							System.out.println("");
+
+							System.out.println("MENU:");
+							System.out.println("");
+
+							System.out.println("1) BUSCAR USUARIOS");
+							System.out.println("2) BUSCAR VEHICULOS");
+							System.out.println("5) SALIR AL INICIO");
+							System.out.println("");
+
+							System.out.print("¿Que desea hacer?: ");
+							int opUser = userMenu.nextInt();
+							switch (opUser) {
+							case 1:// TODO buscar usuarios user
+								Scanner buscar = new Scanner(System.in);
+
+								System.out.println("");
+								System.out.println(" =====================");
+								System.out.println(" == BUSCAR USUARIOS ==");
+								System.out.println(" =====================");
+								System.out.println("");
+
+								System.out.println("Pon el dni del Usuario que quieres buscar: ");
+								String UserDNI = buscar.next();
+								System.out.println("");
+
+								// llamada del metodo BuscarUSUARIO
+								busquedaUsuarios(con, "centreciutat", UserDNI);
+								break;
+
+							case 2:// TODO buscar vehiculos user
+									// scanner
+								Scanner matr = new Scanner(System.in);
+								// cabezal
+								System.out.println("");
+								System.out.println(" ======================");
+								System.out.println(" == BUSCAR VEHICULOS ==");
+								System.out.println(" ======================");
+								System.out.println("");
+								// pregunta con scaner
+								System.out.println("Pon el matricula del vehiculo: ");
+								String BuscarMatr = matr.next();
+								busquedaVehiculos(con, "centreciutat", BuscarMatr);
+
+								// llamada del metodo BuscarVEHICULO
+
+								break;
+
+							case 3:// TODO cerrar sesion user
+
+								System.out.println("");
+								System.out.println(" ===================================");
+								System.out.println(" == Cerrar sesion User normal v.1 ==");
+								System.out.println(" ===================================");
+								System.out.println("");
+								salir = 3;
+								break;
+							default:
+								System.out.println("");
+								System.out.println("No has puesto ninguna opcion permitida");
+							}// cierre swicth user
+
+						} // ciera el while del user normal
+
+					} // ciera el else
+
+				case 2:
 					System.out.println("");
 					System.out.println("");
 					System.out.println(" ==================================");
@@ -131,231 +348,11 @@ public class Main {
 					System.out.println("");
 					System.out.println("Saliste Correctamente");
 					salida = true;
-					continue;
-
-				} else {
-
-					switch (op) {
-					case 1:
-						Scanner login = new Scanner(System.in);
-
-						// usuario
-						System.out.println("Usuario: ");
-						String usuario = login.next();
-						System.out.println("");
-						// contraseña
-						System.out.println("Contraseña: ");
-						String contraseña = login.next();
-						System.out.println("");
-						// el int i y la condicion son para que no de error
-						int i = 0;
-						if (i != 2) {// metodo verUser
-							// admin
-							int salir = 0;
-							while (salir != 5) {
-								Scanner Adm = new Scanner(System.in);
-
-								System.out.println("");
-								System.out.println(" ======================================");
-								System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
-								System.out.println(" ======================================");
-								System.out.println("");
-
-								System.out.println("MENU:");
-								System.out.println("");
-
-								System.out.println("1) AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS");
-								System.out.println("2) EDITAR ALQUILERES");
-								System.out.println("3) ELIMINAR ALQUILERES");
-								System.out.println("4) LISTAR ALQUILERES");
-								System.out.println("5) SALIR AL INICIO");
-								System.out.println("");
-
-								System.out.print("¿Que desea hacer?: ");
-								int opAdm = Adm.nextInt();
-
-								switch (opAdm) {//TODO  SWICTH ADMIN
-								case 1://TODO AÑADIR NUEVOS ESTACIONAMIENTOS ADMIN
-									Scanner admInsert = new Scanner(System.in);
-
-									System.out.println("");
-									System.out.println(" ===============================================");
-									System.out.println(" == AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS ==");
-									System.out.println(" ===============================================");
-									System.out.println("");
-
-									System.out.println("Pon el nombre del Usuario: ");
-									String UserN = admInsert.next();
-									System.out.println("Pon el dni: ");
-									String UserDni = admInsert.next();
-									System.out.println("Pon el estacionamiento que quieras añadir al usuario: ");
-									String UserEst = admInsert.next();
-									System.out.println("");
-
-									// metodo
-									insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
-									break;
-
-								case 2://TODO EDITAR ALQUILER ADMIN
-									// scanner
-									Scanner admEdit = new Scanner(System.in);
-									// cabezal
-									System.out.println("");
-									System.out.println(" =======================");
-									System.out.println(" == EDITAR ALQUILERES ==");
-									System.out.println(" =======================");
-									System.out.println("");
-									// pregunta con scaner
-									System.out.println("Pon el nombre del Usuario: ");
-									String editUser = admEdit.next();
-									System.out.println("Pon el dni: ");
-									String editDni = admEdit.next();
-									System.out.println("Pon el estacionamiento que quieras editar al usuario: ");
-									String editEst = admEdit.next();
-
-									// llamada del metodo
-									modificaAlquiler(con, "centreciutat", editUser, editDni, editEst);
-
-									// llamada del metodo
-
-									break;
-
-								case 3://TODO ELIMINAR ALQUILER ADMIN
-									// scanner
-									Scanner admEli = new Scanner(System.in);
-
-									// cabezal
-									System.out.println("");
-									System.out.println(" =========================");
-									System.out.println(" == ELIMINAR ALQUILERES ==");
-									System.out.println(" =========================");
-									System.out.println("");
-
-									// pregunta con scaner
-									System.out.println("Pon el nombre del Usuario: ");
-									String eliUser = admEli.next();
-									System.out.println("Pon el Dni del Usuario: ");
-									String elidni = admEli.next();
-									System.out.println("Pon el estacionamiento que quieras eliminar al usuario: ");
-									String eliEst = admEli.next();
-
-									// llamada del metodo
-									eliminarAlquileres(con, "centreciutat", elidni, eliEst, eliUser);
-
-									// llamada del metodo
-
-									break;
-								case 4://TODO LISTAR ALQUILER ADMIN
-
-									Scanner admlistar = new Scanner(System.in);
-
-									// cabezal
-
-									System.out.println("");
-									System.out.println(" =======================");
-									System.out.println(" == LISTAR ALQUILERES ==");
-									System.out.println(" =======================");
-									System.out.println("");
-
-									// llamada del metodo
-									listadoAlquileres(con, "centreciutat");
-
-									break;
-								case 5://TODO CERRAR SESION ADMIN
-
-									System.out.println("");
-									System.out.println(" ============================");
-									System.out.println(" == Cerrar sesion  Adm v.1 ==");
-									System.out.println(" ============================");
-									System.out.println("");
-									salir = 5;
-									break;
-									
-								default:
-									System.out.println("");
-									System.out.println("No has puesto ninguna opcion permitida");
-								}// switch admin cierre
-							} // while admin cierre
-						} else {
-							int salir = 0;
-							while (salir != 3) {//TODO while user
-								Scanner user = new Scanner(System.in);
-
-								System.out.println("");
-								System.out.println(" ==========================================");
-								System.out.println(" == Bienvenido Usuario parking APP  v1.0 ==");
-								System.out.println(" ==========================================");
-								System.out.println("");
-
-								System.out.println("MENU:");
-								System.out.println("");
-
-								System.out.println("1) BUSCAR USUARIOS");
-								System.out.println("2) BUSCAR VEHICULOS");
-								System.out.println("5) SALIR AL INICIO");
-								System.out.println("");
-
-								System.out.print("¿Que desea hacer?: ");
-								int opUser = user.nextInt();
-								switch (opUser) {
-								case 1://TODO buscar usuarios user
-									Scanner buscar = new Scanner(System.in);
-
-									System.out.println("");
-									System.out.println(" =====================");
-									System.out.println(" == BUSCAR USUARIOS ==");
-									System.out.println(" =====================");
-									System.out.println("");
-
-									System.out.println("Pon el dni del Usuario que quieres buscar: ");
-									String UserDNI = buscar.next();
-									System.out.println("");
-
-									// llamada del metodo BuscarUSUARIO
-									busquedaUsuarios(con, "centreciutat", UserDNI);
-									break;
-
-								case 2://TODO buscar vehiculos user
-									// scanner
-									Scanner matr = new Scanner(System.in);
-									// cabezal
-									System.out.println("");
-									System.out.println(" ======================");
-									System.out.println(" == BUSCAR VEHICULOS ==");
-									System.out.println(" ======================");
-									System.out.println("");
-									// pregunta con scaner
-									System.out.println("Pon el matricula del vehiculo: ");
-									String BuscarMatr = matr.next();
-									busquedaVehiculos(con, "centreciutat", BuscarMatr);
-
-									// llamada del metodo BuscarVEHICULO
-
-									break;
-
-								case 3://TODO cerrar sesion user
-
-									System.out.println("");
-									System.out.println(" ===================================");
-									System.out.println(" == Cerrar sesion User normal v.1 ==");
-									System.out.println(" ===================================");
-									System.out.println("");
-									salir = 3;
-									break;
-								default:
-									System.out.println("");
-									System.out.println("No has puesto ninguna opcion permitida");
-								}// cierre swicth user
-
-							} // ciera el while del user normal
-
-						} // ciera el else
-					default:
-						System.out.println("");
-						System.out.println("Noo has puesto ninguna opcion permitida");
-					}// cierre switch login
-				}
-
+					break;
+				default:
+					System.out.println("");
+					System.out.println("No has puesto ninguna opcion permitida");
+				}// cierre switch login
 			} // cierre del DO
 			while (salida != true);
 
@@ -459,8 +456,8 @@ public class Main {
 		}
 	}
 
-	private static void insertarUsuario(Connection connection, String BDNombre, String user, String password, String admin)
-			throws SQLException {
+	private static void insertarUsuario(Connection connection, String BDNombre, String user, String password,
+			String admin) throws SQLException {
 
 		Statement stmt = null;
 
@@ -743,7 +740,7 @@ public class Main {
 				System.out.println("*************************************");
 				String nombre = rs.getString(1);
 				System.out.println("Nombre: " + nombre);
-				
+
 				String dni_inquilino = rs.getString(1);
 				System.out.println("Dni inquilino: " + dni_inquilino);
 
@@ -785,7 +782,7 @@ public class Main {
 				System.out.println("*************************************");
 				String nombre = rs.getString(1);
 				System.out.println("Nombre: " + nombre);
-				
+
 				String dni_inquilino = rs.getString(1);
 				System.out.println("Dni inquilino: " + dni_inquilino);
 
@@ -806,19 +803,38 @@ public class Main {
 		}
 
 	}
-	private static void login(Connection con, String BDNombre, String user) throws SQLException {
+
+	private static void inicioSesion(Connection con, String BDNombre, String user, String pass) throws SQLException {
 
 		Statement stmt = null;
-		String query = "select * " + " from " + BDNombre + ".usuarios";
+		String passBDD = "";
+		String userBDD = "";
+		String tipoUser ="";
+		String query = "select user, password, admin from " + BDNombre + ".usuarios where user = " + "'" + user + "'"
+				+ "and password = " + "'" + pass + "'";;
 
 		try {
 
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 
-			
-			
-			
+			while (rs.next()) {
+
+				userBDD = rs.getString(1);
+				// System.out.println("Usuario: " + userBase);
+
+				passBDD = rs.getString(2);
+				// System.out.println("Contraseña: " + passBase);
+				
+				tipoUser = rs.getString(3);
+				System.out.println("Tipo: " + tipoUser);
+				
+			}
+			if (userBDD.equals(user) && passBDD.equals(pass)) {
+				System.out.println("Sesión iniciada.");
+			} else {
+				System.out.println("Inicio de sesión fallido, intentelo de nuevo mas tarde.");
+			}
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -827,6 +843,8 @@ public class Main {
 		}
 
 	}
+
+
 	private static void printSQLException(SQLException ex) {
 
 		ex.printStackTrace(System.err);
