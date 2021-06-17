@@ -75,7 +75,7 @@ public class Main {
 			// "Cinzia");
 			// insertarInquilino(con, "centreciutat", "43845474K", "Bernat", "Coll", "Calle
 			// Melilla 123 ", "ES6000491500051234560123", "MRC6987", null, "Bernat");
-			// insertarInquilino(con, "centreciutat", "43845474K", "Jose", "Galvez",
+			// insertarInquilino(con, "centreciutat", "v", "Jose", "Galvez",
 			// "Avenida Java 8", "ES6000491500051234569870", "ROB2671", null, "Jose");
 
 			// insertar Estacionamientos
@@ -133,210 +133,271 @@ public class Main {
 					String pass = login.next();
 					System.out.println("");
 					inicioSesion(con, "centreciutat", user, pass);
-					
+
 					// el int i y la condicion son para que no de error
 
-					int i = 0;
-					if (i!=2) {// metodo verUser
-						// admin
-						int salir = 0;
-						while (salir != 5) {
-							Scanner Adm = new Scanner(System.in);
-// cosa
-							System.out.println("");
-							System.out.println(" ======================================");
-							System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
-							System.out.println(" ======================================");
-							System.out.println("");
+					String tipoUser = "";
+					String query = "select user, password, admin from centreciutat.usuarios where user = '" + user
+							+ "' and password = '" + pass + "'";
+					String passBDD = "";
+					String userBDD = "";
+					try {
 
-							System.out.println("MENU:");
-							System.out.println("");
+						stmt = con.createStatement();
+						ResultSet rs = stmt.executeQuery(query);
 
-							System.out.println("1) AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS");
-							System.out.println("2) EDITAR ALQUILERES");
-							System.out.println("3) ELIMINAR ALQUILERES");
-							System.out.println("4) LISTAR ALQUILERES");
-							System.out.println("5) SALIR AL INICIO");
-							System.out.println("");
+						while (rs.next()) {
 
-							System.out.print("¿Que desea hacer?: ");
-							int opAdm = Adm.nextInt();
+							userBDD = rs.getString(1);
+							// System.out.println("Usuario: " + userBase);
 
-							switch (opAdm) {// TODO SWICTH ADMIN
-							case 1:// TODO AÑADIR NUEVOS ESTACIONAMIENTOS ADMIN
-								Scanner admInsert = new Scanner(System.in);
+							passBDD = rs.getString(2);
+							// System.out.println("Contraseña: " + passBase);
 
+							tipoUser = rs.getString(3);
+							// System.out.println("Tipo: " + tipoUser);
+
+						}
+					} catch (SQLException e) {
+						printSQLException(e);
+					} finally {
+						stmt.close();
+					}
+
+					// admin
+					if (userBDD.equals(user) && passBDD.equals(pass)) {
+						System.out.println("Sesión iniciada.");
+						if (tipoUser.equals("s")) {
+							System.out.println("Eres administrador, menu admin.");
+							int salir = 0;
+							while (salir != 5) {
+								Scanner Adm = new Scanner(System.in);
 								System.out.println("");
-								System.out.println(" ===============================================");
-								System.out.println(" == AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS ==");
-								System.out.println(" ===============================================");
-								System.out.println("");
-
-								System.out.println("Pon el nombre del Usuario: ");
-								String UserN = admInsert.next();
-								System.out.println("Pon el dni: ");
-								String UserDni = admInsert.next();
-								System.out.println("Pon el estacionamiento que quieras añadir al usuario: ");
-								String UserEst = admInsert.next();
+								System.out.println(" ======================================");
+								System.out.println(" == Bienvenido Adm parking APP  v1.0 ==");
+								System.out.println(" ======================================");
 								System.out.println("");
 
-								// metodo
-								insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
-								break;
-
-							case 2:// TODO EDITAR ALQUILER ADMIN
-									// scanner
-								Scanner admEdit = new Scanner(System.in);
-								// cabezal
-								System.out.println("");
-								System.out.println(" =======================");
-								System.out.println(" == EDITAR ALQUILERES ==");
-								System.out.println(" =======================");
-								System.out.println("");
-								// pregunta con scaner
-								System.out.println("Pon el nombre del Usuario: ");
-								String editUser = admEdit.next();
-								System.out.println("Pon el dni: ");
-								String editDni = admEdit.next();
-								System.out.println("Pon el estacionamiento que quieras editar al usuario: ");
-								String editEst = admEdit.next();
-
-								// llamada del metodo
-								modificaAlquiler(con, "centreciutat", editUser, editDni, editEst);
-
-								// llamada del metodo
-
-								break;
-
-							case 3:// TODO ELIMINAR ALQUILER ADMIN
-									// scanner
-								Scanner admEli = new Scanner(System.in);
-
-								// cabezal
-								System.out.println("");
-								System.out.println(" =========================");
-								System.out.println(" == ELIMINAR ALQUILERES ==");
-								System.out.println(" =========================");
+								System.out.println("MENU:");
 								System.out.println("");
 
-								// pregunta con scaner
-								System.out.println("Pon el nombre del Usuario: ");
-								String eliUser = admEli.next();
-								System.out.println("Pon el Dni del Usuario: ");
-								String elidni = admEli.next();
-								System.out.println("Pon el estacionamiento que quieras eliminar al usuario: ");
-								String eliEst = admEli.next();
-
-								// llamada del metodo
-								eliminarAlquileres(con, "centreciutat", elidni, eliEst, eliUser);
-
-								// llamada del metodo
-
-								break;
-							case 4:// TODO LISTAR ALQUILER ADMIN
-
-								Scanner admlistar = new Scanner(System.in);
-
-								// cabezal
-
-								System.out.println("");
-								System.out.println(" =======================");
-								System.out.println(" == LISTAR ALQUILERES ==");
-								System.out.println(" =======================");
+								System.out.println("1) AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS");
+								System.out.println("2) EDITAR ALQUILERES");
+								System.out.println("3) ELIMINAR ALQUILERES");
+								System.out.println("4) LISTAR ALQUILERES");
+								System.out.println("5) SALIR AL INICIO");
 								System.out.println("");
 
-								// llamada del metodo
-								listadoAlquileres(con, "centreciutat");
+								System.out.print("¿Que desea hacer?: ");
+								int opAdm = Adm.nextInt();
 
-								break;
-							case 5:// TODO CERRAR SESION ADMIN
+								switch (opAdm) {// TODO SWICTH ADMIN
+								case 1:// TODO AÑADIR NUEVOS ESTACIONAMIENTOS ADMIN
+									Scanner admInsert = new Scanner(System.in);
+
+									System.out.println("");
+									System.out.println(" ===============================================");
+									System.out.println(" == AÑADIR USUARIOS NUEVOS A ESTACIONAMIENTOS ==");
+									System.out.println(" ===============================================");
+									System.out.println("");
+									System.out.println("¿El usuario ha sido inquilino anteriormente?");
+									System.out.println("s/n");
+									char res = admInsert.next().charAt(0);
+									if (res == 's') {
+										System.out.println("Pon el nombre del Usuario: ");
+										String UserN = admInsert.next();
+										System.out.println("Pon el dni: ");
+										String UserDni = admInsert.next();
+										System.out.println("Pon el estacionamiento que quieras añadir al usuario: ");
+										String UserEst = admInsert.next();
+										System.out.println("");
+										insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
+									} else if (res == 'n') {
+										Scanner nuevo = new Scanner(System.in);
+										System.out.println("Pon el nombre del Usuario: ");
+										String UserN = nuevo.nextLine();
+										System.out.println("Pon el dni: ");
+										String UserDni = nuevo.nextLine();
+										System.out.println("Pon el nombre: ");
+										String UserNombre = nuevo.nextLine();
+										System.out.println("Pon el apellido: ");
+										String UserApellido = nuevo.nextLine();
+										System.out.println("Pon la direccion: ");
+										String UserDir = nuevo.nextLine();
+										System.out.println("Pon la cuenta corriente: ");
+										String UserCC = nuevo.nextLine();
+										System.out.println("Pon la matricula del vehiculo: ");
+										String UserMatVe = nuevo.nextLine();
+										System.out.println("Pon el estacionamiento que quieras añadir al usuario: ");
+										String UserEst = nuevo.nextLine();
+
+										System.out.println("");
+										insertarInquilino(con, "centreciutat", UserDni, UserNombre, UserApellido,
+												UserDir, UserCC, UserMatVe, UserEst, UserN);
+										insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
+									} else {
+										System.out.println("Respuesta incorrecta.");
+									}
+
+									// metodo
+
+									break;
+
+								case 2:// TODO EDITAR ALQUILER ADMIN
+										// scanner
+									Scanner admEdit = new Scanner(System.in);
+									// cabezal
+									System.out.println("");
+									System.out.println(" =======================");
+									System.out.println(" == EDITAR ALQUILERES ==");
+									System.out.println(" =======================");
+									System.out.println("");
+									// pregunta con scaner
+									System.out.println("Pon el nombre del Usuario: ");
+									String editUser = admEdit.next();
+									System.out.println("Pon el dni: ");
+									String editDni = admEdit.next();
+									System.out.println("Pon el estacionamiento nuevo: ");
+									String editEst = admEdit.next();
+
+									// llamada del metodo
+									modificaAlquiler(con, "centreciutat", editUser, editDni, editEst);
+
+									// llamada del metodo
+
+									break;
+
+								case 3:// TODO ELIMINAR ALQUILER ADMIN
+										// scanner
+									Scanner admEli = new Scanner(System.in);
+
+									// cabezal
+									System.out.println("");
+									System.out.println(" =========================");
+									System.out.println(" == ELIMINAR ALQUILERES ==");
+									System.out.println(" =========================");
+									System.out.println("");
+
+									// pregunta con scaner
+									System.out.println("Pon el nombre del Usuario: ");
+									String eliUser = admEli.next();
+									System.out.println("Pon el Dni del Usuario: ");
+									String elidni = admEli.next();
+									System.out.println("Pon el estacionamiento que quieras eliminar al usuario: ");
+									String eliEst = admEli.next();
+
+									// llamada del metodo
+									eliminarAlquileres(con, "centreciutat", elidni, eliEst, eliUser);
+
+									// llamada del metodo
+
+									break;
+								case 4:// TODO LISTAR ALQUILER ADMIN
+
+									Scanner admlistar = new Scanner(System.in);
+
+									// cabezal
+
+									System.out.println("");
+									System.out.println(" =======================");
+									System.out.println(" == LISTAR ALQUILERES ==");
+									System.out.println(" =======================");
+									System.out.println("");
+
+									// llamada del metodo
+									listadoAlquileres(con, "centreciutat");
+
+									break;
+								case 5:// TODO CERRAR SESION ADMIN
+
+									System.out.println("");
+									System.out.println(" ============================");
+									System.out.println(" == Cerrar sesion  Adm v.1 ==");
+									System.out.println(" ============================");
+									System.out.println("");
+									salir = 5;
+									break;
+
+								default:
+									System.out.println("");
+									System.out.println("No has puesto ninguna opcion permitida");
+								}// switch admin cierre
+							} // while admin cierre
+						} else if (tipoUser.equals("n")) {
+							System.out.println("No eres administrador, menu normal.");
+							int salir = 0;
+							while (salir != 3) {// TODO while user
+								Scanner userMenu = new Scanner(System.in);
 
 								System.out.println("");
-								System.out.println(" ============================");
-								System.out.println(" == Cerrar sesion  Adm v.1 ==");
-								System.out.println(" ============================");
-								System.out.println("");
-								salir = 5;
-								break;
-
-							default:
-								System.out.println("");
-								System.out.println("No has puesto ninguna opcion permitida");
-							}// switch admin cierre
-						} // while admin cierre
-					} else {
-						int salir = 0;
-						while (salir != 3) {// TODO while user
-							Scanner userMenu = new Scanner(System.in);
-
-							System.out.println("");
-							System.out.println(" ==========================================");
-							System.out.println(" == Bienvenido Usuario parking APP  v1.0 ==");
-							System.out.println(" ==========================================");
-							System.out.println("");
-
-							System.out.println("MENU:");
-							System.out.println("");
-
-							System.out.println("1) BUSCAR USUARIOS");
-							System.out.println("2) BUSCAR VEHICULOS");
-							System.out.println("5) SALIR AL INICIO");
-							System.out.println("");
-
-							System.out.print("¿Que desea hacer?: ");
-							int opUser = userMenu.nextInt();
-							switch (opUser) {
-							case 1:// TODO buscar usuarios user
-								Scanner buscar = new Scanner(System.in);
-
-								System.out.println("");
-								System.out.println(" =====================");
-								System.out.println(" == BUSCAR USUARIOS ==");
-								System.out.println(" =====================");
+								System.out.println(" ==========================================");
+								System.out.println(" == Bienvenido Usuario parking APP  v1.0 ==");
+								System.out.println(" ==========================================");
 								System.out.println("");
 
-								System.out.println("Pon el dni del Usuario que quieres buscar: ");
-								String UserDNI = buscar.next();
+								System.out.println("MENU:");
 								System.out.println("");
 
-								// llamada del metodo BuscarUSUARIO
-								busquedaUsuarios(con, "centreciutat", UserDNI);
-								break;
-
-							case 2:// TODO buscar vehiculos user
-									// scanner
-								Scanner matr = new Scanner(System.in);
-								// cabezal
+								System.out.println("1) BUSCAR USUARIOS");
+								System.out.println("2) BUSCAR VEHICULOS");
+								System.out.println("3) SALIR AL INICIO");
 								System.out.println("");
-								System.out.println(" ======================");
-								System.out.println(" == BUSCAR VEHICULOS ==");
-								System.out.println(" ======================");
-								System.out.println("");
-								// pregunta con scaner
-								System.out.println("Pon el matricula del vehiculo: ");
-								String BuscarMatr = matr.next();
-								busquedaVehiculos(con, "centreciutat", BuscarMatr);
 
-								// llamada del metodo BuscarVEHICULO
+								System.out.print("¿Que desea hacer?: ");
+								int opUser = userMenu.nextInt();
+								switch (opUser) {
+								case 1:// TODO buscar usuarios user
+									Scanner buscar = new Scanner(System.in);
 
-								break;
+									System.out.println("");
+									System.out.println(" =====================");
+									System.out.println(" == BUSCAR USUARIOS ==");
+									System.out.println(" =====================");
+									System.out.println("");
 
-							case 3:// TODO cerrar sesion user
+									System.out.println("Pon el dni del Usuario que quieres buscar: ");
+									String UserDNI = buscar.next();
+									System.out.println("");
 
-								System.out.println("");
-								System.out.println(" ===================================");
-								System.out.println(" == Cerrar sesion User normal v.1 ==");
-								System.out.println(" ===================================");
-								System.out.println("");
-								salir = 3;
-								break;
-							default:
-								System.out.println("");
-								System.out.println("No has puesto ninguna opcion permitida");
-							}// cierre swicth user
+									// llamada del metodo BuscarUSUARIO
+									busquedaUsuarios(con, "centreciutat", UserDNI);
+									break;
 
-						} // ciera el while del user normal
+								case 2:// TODO buscar vehiculos user
+										// scanner
+									Scanner matr = new Scanner(System.in);
+									// cabezal
+									System.out.println("");
+									System.out.println(" ======================");
+									System.out.println(" == BUSCAR VEHICULOS ==");
+									System.out.println(" ======================");
+									System.out.println("");
+									// pregunta con scaner
+									System.out.println("Pon el matricula del vehiculo: ");
+									String BuscarMatr = matr.next();
+									busquedaVehiculos(con, "centreciutat", BuscarMatr);
 
+									// llamada del metodo BuscarVEHICULO
+
+									break;
+
+								case 3:// TODO cerrar sesion user
+
+									System.out.println("");
+									System.out.println(" ===================================");
+									System.out.println(" == Cerrar sesion User normal v.1 ==");
+									System.out.println(" ===================================");
+									System.out.println("");
+									salir = 3;
+									break;
+								default:
+									System.out.println("");
+									System.out.println("No has puesto ninguna opcion permitida");
+								}// cierre swicth user
+
+							} // ciera el while del user normal
+
+						}
 					} // ciera el else
 
 				case 2:
@@ -352,7 +413,8 @@ public class Main {
 				default:
 					System.out.println("");
 					System.out.println("No has puesto ninguna opcion permitida");
-				}// cierre switch login
+				}
+				// cierre switch login
 			} // cierre del DO
 			while (salida != true);
 
@@ -602,14 +664,22 @@ public class Main {
 	private static void modificaAlquiler(Connection con, String BDNombre, String usuario, String dni,
 			String estacionamiento) throws SQLException {
 
+		String eliminarfila = "UPDATE " + BDNombre
+				+ ".estacionamiento set dni_inquilino = null where codigo_estacionamiento = '" + estacionamiento + "'";
+		// String cambiarEstacionamiento = "UPDATE " + BDNombre + ".estacionamiento set
+		// dni_inquilino = '" + dni + "' where codigo_estacionamiento = '" +
+		// estacionamiento + "'";
+		// String cambiarEstacionamientoInquilino = "UPDATE " + BDNombre + ".inquilinos
+		// set codigo_estacionamiento = '" + estacionamiento + "' where dni_inquilino =
+		// '" + dni + "'";
 		Statement stmt = null;
-
 		try {
-			// modificaAlquiler(con, "centreciutat", editUser, editDni,editEst);
 			stmt = con.createStatement();
-			stmt.executeUpdate("UPDATE " + BDNombre + ".estacionamiento SET codigo_estacionamiento = " + "'"
-					+ estacionamiento + "'" + " where dni_inquilino = " + dni);
-
+			stmt.executeUpdate(eliminarfila);
+			// stmt.executeUpdate(cambiarEstacionamiento);
+			// stmt.executeUpdate(cambiarEstacionamientoInquilino);
+			ResultSet rs = stmt
+					.executeQuery("SELECT * FROM " + BDNombre + ".estacionamiento WHERE dni_inquilino = '" + dni + "'");
 			System.out.println("");
 			System.out.println("Se ha modificado el estacionamiento: " + estacionamiento + " del usuario: " + usuario);
 
@@ -624,21 +694,26 @@ public class Main {
 	private static void eliminarAlquileres(Connection con, String BDNombre, String dni, String CodEst, String usuario)
 			throws SQLException {
 
-		String eliminarfila = "DELETE FROM " + BDNombre + ".estacionamiento " + "WHERE  numeroInterno= " + dni;
-
+		String eliminarfila = "UPDATE " + BDNombre
+				+ ".estacionamiento set dni_inquilino = null where codigo_estacionamiento = '" + CodEst + "'";
+		String cambiarAlquilado = "UPDATE " + BDNombre
+				+ ".estacionamiento set alquilado = 'n' where codigo_estacionamiento = '" + CodEst + "'";
+		String cambiarInquilino = "UPDATE " + BDNombre
+				+ ".inquilinos set codigo_estacionamiento = null where dni_inquilino = '" + dni + "'";
 		Statement stmt = null;
-		stmt.executeUpdate(
-				"UPDATE + BDNombre .estacionamiento set alquilado = 'N' where codigo_estacionamiento = CodEst");
+
 		try {
 
 			stmt = con.createStatement();
 			// poner los valores para que se cambie y la tabla
 			stmt.executeUpdate(eliminarfila);
+			stmt.executeUpdate(cambiarAlquilado);
+			stmt.executeUpdate(cambiarInquilino);
 
 			// mensaje para que sepa que a ido todo bien
 			System.out.println("");
-			System.out.println(
-					"se a eliminado correctamente el alquiler del usuario:  " + usuario + " de la tabla ordenadores");
+			System.out.println("se ha eliminado correctamente el alquiler del usuario:  " + usuario
+					+ " de la tabla estacionamientos");
 
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -688,30 +763,29 @@ public class Main {
 
 	}
 
-	private static void insertarUsuariosEstacionamientos(Connection connection, String BDNombre, String user,
-			String dni, String esta) throws SQLException {
+	private static void insertarUsuariosEstacionamientos(Connection con, String BDNombre, String user, String dni,
+			String esta) throws SQLException {
 
+		String cambiarAlquilado = "UPDATE " + BDNombre
+				+ ".estacionamiento set alquilado = 's' where codigo_estacionamiento = '" + esta + "'";
+		String añadirDni = "UPDATE " + BDNombre + ".estacionamiento set dni_inquilino = '" + dni
+				+ "' where codigo_estacionamiento = '" + esta + "'";
+		String añadirEstacionamientoInquilino = "UPDATE " + BDNombre + ".inquilinos set codigo_estacionamiento = '"
+				+ esta + "' where dni_inquilino = '" + dni + "'";
 		Statement stmt = null;
 
 		try {
 
-			stmt = connection.createStatement();
-			stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			stmt = con.createStatement();
+			// poner los valores para que se cambie y la tabla
 
-			ResultSet rs = stmt.executeQuery("SELECT * FROM " + BDNombre + ".estacionamiento");
+			stmt.executeUpdate(cambiarAlquilado);
+			stmt.executeUpdate(añadirDni);
+			stmt.executeUpdate(añadirEstacionamientoInquilino);
 
-			rs.moveToInsertRow();
-			// donde se guardara los valores de las preguntas
-			rs.updateString("Dni del usuario: ", dni);
-			rs.updateString("Estacionamiento: ", esta);
-
-			rs.insertRow();
-			rs.beforeFirst();
-
-			System.out.println("");// mensaje de que todo a ido bien
-			System.out.println(
-					"Se ha insertado correctamente el nuevo estacionamiento: " + esta + " al  usuario: " + user);
-
+			// mensaje para que sepa que a ido todo bien
+			System.out.println("");
+			System.out.println("se ha actualizado correctamente el alquiler del usuario:  " + user);
 		} catch (SQLException e) {
 			printSQLException(e);
 		} finally {
@@ -809,9 +883,9 @@ public class Main {
 		Statement stmt = null;
 		String passBDD = "";
 		String userBDD = "";
-		String tipoUser ="";
 		String query = "select user, password, admin from " + BDNombre + ".usuarios where user = " + "'" + user + "'"
-				+ "and password = " + "'" + pass + "'";;
+				+ "and password = " + "'" + pass + "'";
+		;
 
 		try {
 
@@ -825,16 +899,7 @@ public class Main {
 
 				passBDD = rs.getString(2);
 				// System.out.println("Contraseña: " + passBase);
-				
-				tipoUser = rs.getString(3);
-				System.out.println("Tipo: " + tipoUser);
-				
-			}
-			if (userBDD.equals(user) && passBDD.equals(pass)) {
-				System.out.println("Sesión iniciada.");
-			} else {
-				System.out.println("Inicio de sesión fallido, intentelo de nuevo mas tarde.");
-				System.exit(0);
+
 			}
 
 		} catch (SQLException e) {
@@ -844,7 +909,6 @@ public class Main {
 		}
 
 	}
-
 
 	private static void printSQLException(SQLException ex) {
 
