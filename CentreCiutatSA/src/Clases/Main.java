@@ -93,12 +93,9 @@ public class Main {
 			// insertarEstacionamiento(con, "centreciutat", "1A29","n", 4,87, null);
 
 			// insertar vehiculos
-			// insertarVehiculo(con, "centreciutat", "BCD1234", "Ibiza", "Seat", "Azul",
-			// "Turismo", "43115892H");
-			// insertarVehiculo(con, "centreciutat", "JSA1684", "Clio", "Renault", "Blanco",
-			// "Turismo", "43365874I");
-			// insertarVehiculo(con, "centreciutat", "SAG7512", "SQ2", "Audi", "Rojo",
-			// "TodoTerreno", "43223300K");
+			//insertarVehiculo(con, "centreciutat", "BCD1234", "Ibiza", "Seat", "Azul", "Turismo", "43115892H");
+			//insertarVehiculo(con, "centreciutat", "JSA1684", "Clio", "Renault", "Blanco", "Turismo", "43365874I");
+			//insertarVehiculo(con, "centreciutat", "SAG7512", "SQ2", "Audi", "Rojo", "TodoTerreno", "43223300K");
 
 			// bucle
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
@@ -841,6 +838,7 @@ public class Main {
 		Statement stmt = null;
 		String query = "select * " + " from " + BDNombre + ".vehiculos WHERE matricula_vehiculo = '" + matricula + "'";
 
+
 		try {
 
 			stmt = con.createStatement();
@@ -854,25 +852,26 @@ public class Main {
 
 				System.out.println("");
 				System.out.println("*************************************");
-		
+				
 
 				String dni_inquilino = rs.getString(6);
 				System.out.println("Dni inquilino: " + dni_inquilino);
 
 				String matricula_vehiculo = rs.getString(1);
 				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
-
-				String modelo = rs.getString(2);
-				System.out.println("Modelo: " + modelo);
 				
 				String marca = rs.getString(3);
 				System.out.println("Marca: " + marca);
 				
+				String modelo = rs.getString(2);
+				System.out.println("Modelo: " + modelo);
+				
 				String color = rs.getString(4);
-				System.out.println("Color: " + color);
+				System.out.println("color: " + color);
 				
 				String tipoVehiculo = rs.getString(5);
 				System.out.println("Tipo vehiculo: " + tipoVehiculo);
+				
 
 				System.out.println("*************************************");
 
