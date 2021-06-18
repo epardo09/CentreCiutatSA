@@ -93,12 +93,9 @@ public class Main {
 			// insertarEstacionamiento(con, "centreciutat", "1A29","n", 4,87, null);
 
 			// insertar vehiculos
-			// insertarVehiculo(con, "centreciutat", "BCD1234", "Ibiza", "Seat", "Azul",
-			// "Turismo", "43115892H");
-			// insertarVehiculo(con, "centreciutat", "JSA1684", "Clio", "Renault", "Blanco",
-			// "Turismo", "43365874I");
-			// insertarVehiculo(con, "centreciutat", "SAG7512", "SQ2", "Audi", "Rojo",
-			// "TodoTerreno", "43223300K");
+			//insertarVehiculo(con, "centreciutat", "BCD1234", "Ibiza", "Seat", "Azul", "Turismo", "43115892H");
+			//insertarVehiculo(con, "centreciutat", "JSA1684", "Clio", "Renault", "Blanco", "Turismo", "43365874I");
+			//insertarVehiculo(con, "centreciutat", "SAG7512", "SQ2", "Audi", "Rojo", "TodoTerreno", "43223300K");
 
 			// bucle
 			do { // Hasta que la variable salida no tenga el valor true no se terminara el
@@ -839,7 +836,8 @@ public class Main {
 	private static void busquedaVehiculos(Connection con, String BDNombre, String matricula) throws SQLException {
 
 		Statement stmt = null;
-		String query = "select * " + " from " + BDNombre + ".estacionamiento WHERE matricula_vehiculo = '" + matricula + "'";
+		String query = "select * " + " from " + BDNombre + ".vehiculos WHERE matricula_vehiculo = '" + matricula + "'";
+		query = "select dni_inquilino from " + BDNombre + ".vehiculos WHERE matricula_vehiculo = '"+ matricula + "'";
 
 		try {
 
@@ -854,25 +852,14 @@ public class Main {
 
 				System.out.println("");
 				System.out.println("*************************************");
-		
+				String nombre = rs.getString(1);
+				System.out.println("Nombre: " + nombre);
 
-				String dni_inquilino = rs.getString(6);
+				String dni_inquilino = rs.getString(1);
 				System.out.println("Dni inquilino: " + dni_inquilino);
 
-				String matricula_vehiculo = rs.getString(1);
+				String matricula_vehiculo = rs.getString(2);
 				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
-
-				String modelo = rs.getString(2);
-				System.out.println("Modelo: " + modelo);
-				
-				String marca = rs.getString(3);
-				System.out.println("Marca: " + marca);
-				
-				String color = rs.getString(4);
-				System.out.println("Color: " + color);
-				
-				String tipoVehiculo = rs.getString(5);
-				System.out.println("Tipo vehiculo: " + tipoVehiculo);
 
 				System.out.println("*************************************");
 
