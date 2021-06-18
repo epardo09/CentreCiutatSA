@@ -228,13 +228,23 @@ public class Main {
 										String UserMatVe = nuevo.nextLine();
 										System.out.println("Pon el estacionamiento que quieras añadir al usuario: ");
 										String UserEst = nuevo.nextLine();
-
+										System.out.println("= AÑADIR VEHÍCULO =");
+										System.out.println("");
+										System.out.println("Pon la marca del vehículo: ");
+										String UserMarVe = nuevo.nextLine();
+										System.out.println("Pon el modelo: ");
+										String UserMod = nuevo.nextLine();
+										System.out.println("Pon el color del vehículo: ");
+										String UserColor = nuevo.nextLine();
+										System.out.println("Dinos el tipo de vehículo: ");
+										String UserTipoVe = nuevo.nextLine();
 										System.out.println("");
 										//llamada metodo insertarInquilinos
 										insertarInquilino(con, "centreciutat", UserDni, UserNombre, UserApellido,
 												UserDir, UserCC, UserMatVe, UserEst, UserN);
 										//llamada metodo insertarUsuariosEstacionamientos
 										insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
+										insertarVehiculo(con, "centreciutat", UserMatVe, UserMod, UserMarVe, UserColor, UserTipoVe, UserDni);
 									} else {//por si no pone ninguna opcion correcta
 										System.out.println("Respuesta incorrecta.");
 									}
