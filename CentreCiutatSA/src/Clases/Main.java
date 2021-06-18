@@ -118,7 +118,7 @@ public class Main {
 				int op = sc.nextInt();
 
 				switch (op) {
-				case 1:
+				case 1://si el usario apreta el valor uno se le metera en el login
 					Scanner login = new Scanner(System.in);
 
 					// usuario
@@ -130,10 +130,13 @@ public class Main {
 					String pass = login.next();
 					System.out.println("");
 					inicioSesion(con, "centreciutat", user, pass);
-
+					/*llamamos al metodo inicioSesion, que hara una comprobacion del usuario y la contraseña que pongamos,
+					 *  lo buscara en la base de datos y si nos iguales nos dejara entrar
+					 */
 					String tipoUser = "";
 					String query = "select user, password, admin from centreciutat.usuarios where user = '" + user
 							+ "' and password = '" + pass + "'";
+					//hacemos otro select para guardar el valor del user y la contraseña para tener si es admin o no
 					String passBDD = "";
 					String userBDD = "";
 					try {
@@ -160,11 +163,11 @@ public class Main {
 					}
 
 					// admin
-					if (userBDD.equals(user) && passBDD.equals(pass)) {
+					if (userBDD.equals(user) && passBDD.equals(pass)) {//la comprobacion
 						System.out.println("Sesión iniciada.");
-						if (tipoUser.equals("s")) {
+						if (tipoUser.equals("s")) {//si es admin
 							int salir = 0;
-							while (salir != 5) {
+							while (salir != 5) {//bucle de las operaciones del admin
 								Scanner Adm = new Scanner(System.in);
 								System.out.println("");
 								System.out.println(" ======================================");
@@ -186,7 +189,7 @@ public class Main {
 								int opAdm = Adm.nextInt();
 
 								switch (opAdm) {// TODO SWICTH ADMIN
-								case 1:// TODO AÑADIR NUEVOS ESTACIONAMIENTOS ADMIN
+								case 1:// AÑADIR NUEVOS ESTACIONAMIENTOS ADMIN
 									Scanner admInsert = new Scanner(System.in);
 
 									System.out.println("");
@@ -197,7 +200,7 @@ public class Main {
 									System.out.println("¿El usuario ha sido inquilino anteriormente?");
 									System.out.println("s/n");
 									char res = admInsert.next().charAt(0);
-									if (res == 's') {
+									if (res == 's') {//este if es para si es nesesario crear nuevos inquilinos o no
 										System.out.println("Pon el nombre del Usuario: ");
 										String UserN = admInsert.next();
 										System.out.println("Pon el dni: ");
@@ -205,6 +208,7 @@ public class Main {
 										System.out.println("Pon el estacionamiento que quieras añadir al usuario: ");
 										String UserEst = admInsert.next();
 										System.out.println("");
+										//llamada metodo insertarUsuariosEstacionamientos
 										insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
 									} else if (res == 'n') {
 										Scanner nuevo = new Scanner(System.in);
@@ -226,18 +230,20 @@ public class Main {
 										String UserEst = nuevo.nextLine();
 
 										System.out.println("");
+										//llamada metodo insertarInquilinos
 										insertarInquilino(con, "centreciutat", UserDni, UserNombre, UserApellido,
 												UserDir, UserCC, UserMatVe, UserEst, UserN);
+										//llamada metodo insertarUsuariosEstacionamientos
 										insertarUsuariosEstacionamientos(con, "centreciutat", UserN, UserDni, UserEst);
-									} else {
+									} else {//por si no pone ninguna opcion correcta
 										System.out.println("Respuesta incorrecta.");
 									}
 
-									// metodo
+									
 
 									break;
 
-								case 2:// TODO EDITAR ALQUILER ADMIN
+								case 2://EDITAR ALQUILER ADMIN
 										// scanner
 									Scanner admEdit = new Scanner(System.in);
 									// cabezal
@@ -257,11 +263,9 @@ public class Main {
 									// llamada del metodo
 									modificaAlquiler(con, "centreciutat", editUser, editDni, editEst);
 
-									// llamada del metodo
-
 									break;
 
-								case 3:// TODO ELIMINAR ALQUILER ADMIN
+								case 3://ELIMINAR ALQUILER ADMIN
 										// scanner
 									Scanner admEli = new Scanner(System.in);
 
@@ -302,7 +306,7 @@ public class Main {
 									listadoAlquileres(con, "centreciutat");
 
 									break;
-								case 5:// TODO CERRAR SESION ADMIN
+								case 5:// CERRAR SESION ADMIN
 
 									System.out.println("");
 									System.out.println(" ============================");
@@ -312,14 +316,15 @@ public class Main {
 									salir = 5;
 									break;
 
-								default:
+								default://para los posibles fallos
 									System.out.println("");
 									System.out.println("No has puesto ninguna opcion permitida");
 								}// switch admin cierre
 							} // while admin cierre
 						} else if (tipoUser.equals("n")) {
+							//en la comprobacion del usuario, la contraseña y el tipo de usuario, si el usuario no es admin lo metera en este menu 
 							int salir = 0;
-							while (salir != 3) {// TODO while user
+							while (salir != 3) {//bucle usuario normal
 								Scanner userMenu = new Scanner(System.in);
 
 								System.out.println("");
@@ -339,7 +344,7 @@ public class Main {
 								System.out.print("¿Que desea hacer?: ");
 								int opUser = userMenu.nextInt();
 								switch (opUser) {
-								case 1:// TODO buscar usuarios user
+								case 1:// buscar usuarios user
 									Scanner buscar = new Scanner(System.in);
 
 									System.out.println("");
@@ -356,7 +361,7 @@ public class Main {
 									busquedaUsuarios(con, "centreciutat", UserDNI);
 									break;
 
-								case 2:// TODO buscar vehiculos user
+								case 2:// buscar vehiculos user
 										// scanner
 									Scanner matr = new Scanner(System.in);
 									// cabezal
@@ -368,13 +373,12 @@ public class Main {
 									// pregunta con scaner
 									System.out.println("Pon el matricula del vehiculo: ");
 									String BuscarMatr = matr.next();
+									//metodo de busquedaVehiculos
 									busquedaVehiculos(con, "centreciutat", BuscarMatr);
-
-									// llamada del metodo BuscarVEHICULO
 
 									break;
 
-								case 3:// TODO cerrar sesion user
+								case 3:// cerrar sesion user
 
 									System.out.println("");
 									System.out.println(" ===================================");
@@ -383,7 +387,7 @@ public class Main {
 									System.out.println("");
 									salir = 3;
 									break;
-								default:
+								default://posibles errores
 									System.out.println("");
 									System.out.println("No has puesto ninguna opcion permitida");
 								}// cierre swicth user
@@ -393,7 +397,7 @@ public class Main {
 						}
 					} // ciera el else
 
-				case 2:
+				case 2://si el usuario elige la opcion 2 para salir del programa al iniciar
 					System.out.println("");
 					System.out.println("");
 					System.out.println(" ==================================");
@@ -403,7 +407,7 @@ public class Main {
 					System.out.println("Saliste Correctamente");
 					salida = true;
 					break;
-				default:
+				default://posibles fallos del opcion
 					System.out.println("");
 					System.out.println("No has puesto ninguna opcion permitida");
 				}
@@ -418,7 +422,7 @@ public class Main {
 			printSQLException(e);
 		}
 	}
-
+	//metodo crearUsuarios
 	private static void crearUsuarios(Connection connection, String BDNombre) throws SQLException {
 
 		String createString = "create table " + BDNombre + ".usuarios" + "(user varchar(50) NOT NULL,"
@@ -440,7 +444,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo crearInquilinos
 	private static void crearInquilinos(Connection connection, String BDNombre) throws SQLException {
 		String createString = "create table " + BDNombre + ".inquilinos" + "(dni_inquilino varchar(10) NOT NULL,"
 				+ "nombre varchar(25) NOT NULL, apellidos varchar(50), direccion varchar(25),"
@@ -464,7 +468,7 @@ public class Main {
 			stmt.close(); // Cerramos la conexión
 		}
 	}
-
+	//metodo crearEstacionamientos
 	private static void crearEstacionamientos(Connection connection, String BDNombre) throws SQLException {
 		String createString = "create table " + BDNombre + ".estacionamiento"
 				+ "(codigo_estacionamiento varchar(4) NOT NULL, alquilado varchar(1),"
@@ -487,7 +491,7 @@ public class Main {
 			stmt.close(); // Cerramos la conexión
 		}
 	}
-
+	//metodo crearVehiculos
 	private static void crearVehiculos(Connection connection, String BDNombre) throws SQLException {
 		String createString = "create table " + BDNombre + ".vehiculos"
 				+ "(matricula_vehiculo varchar(7) NOT NULL, modelo varchar(20),"
@@ -510,7 +514,7 @@ public class Main {
 			stmt.close(); // Cerramos la conexión
 		}
 	}
-
+	//metodo insertarUsuario
 	private static void insertarUsuario(Connection connection, String BDNombre, String user, String password,
 			String admin) throws SQLException {
 
@@ -542,7 +546,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo insertarEstacionamiento
 	private static void insertarEstacionamiento(Connection connection, String BDNombre, String codigo_estacionamiento,
 			String alquilado, int m2, double precio_mensual, String dni_inquilino) throws SQLException {
 
@@ -577,7 +581,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo insertarVehiculo
 	private static void insertarVehiculo(Connection connection, String BDNombre, String matricula_vehiculo,
 			String modelo, String marca, String color, String tipoVehiculo, String dni_inquilino) throws SQLException {
 
@@ -613,7 +617,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo insertarInquilino
 	private static void insertarInquilino(Connection connection, String BDNombre, String dni_inquilino, String nombre,
 			String apellidos, String direccion, String cuenta_corriente, String matricula_vehiculo,
 			String codigo_estacionamiento, String user) throws SQLException {
@@ -653,7 +657,7 @@ public class Main {
 
 	}
 
-	// Modificar la BBDD
+	 //metodo modificaAlquiler
 	private static void modificaAlquiler(Connection con, String BDNombre, String usuario, String dni,
 			String estacionamiento) throws SQLException {
 
@@ -683,7 +687,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo eliminarAlquileres
 	private static void eliminarAlquileres(Connection con, String BDNombre, String dni, String CodEst, String usuario)
 			throws SQLException {
 
@@ -715,7 +719,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo listadoAlquileres
 	private static void listadoAlquileres(Connection con, String BDNombre) throws SQLException {
 
 		Statement stmt = null;
@@ -730,7 +734,7 @@ public class Main {
 			System.out.println("");
 			System.out.println("**** Lista de Alquileres ****");
 
-			while (rs.next()) {
+			while (rs.next()) {//lo que saldra por pantalla
 
 				System.out.println("");
 				System.out.println("*************************************");
@@ -755,7 +759,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo insertarUsuariosEstacionamientos
 	private static void insertarUsuariosEstacionamientos(Connection con, String BDNombre, String user, String dni,
 			String esta) throws SQLException {
 
@@ -786,7 +790,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo busquedaUsuarios
 	private static void busquedaUsuarios(Connection con, String BDNombre, String dni) throws SQLException {
 
 		Statement stmt = null;
@@ -801,7 +805,7 @@ public class Main {
 			System.out.println("");
 			System.out.println("**** Busqueda de Usuario ****");
 
-			while (rs.next()) {
+			while (rs.next()) {//lo que saldra por pantalla
 
 				System.out.println("");
 				System.out.println("*************************************");
@@ -828,7 +832,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo busquedaVehiculos
 	private static void busquedaVehiculos(Connection con, String BDNombre, String matricula) throws SQLException {
 
 		Statement stmt = null;
@@ -844,7 +848,7 @@ public class Main {
 			System.out.println("");
 			System.out.println("**** Busqueda de vehiculo ****");
 
-			while (rs.next()) {
+			while (rs.next()) {//lo que saldra por pantalla
 
 				System.out.println("");
 				System.out.println("*************************************");
@@ -880,7 +884,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo inicioSesion
 	private static void inicioSesion(Connection con, String BDNombre, String user, String pass) throws SQLException {
 
 		Statement stmt = null;
@@ -912,7 +916,7 @@ public class Main {
 		}
 
 	}
-
+	//metodo printSQLException
 	private static void printSQLException(SQLException ex) {
 
 		ex.printStackTrace(System.err);
