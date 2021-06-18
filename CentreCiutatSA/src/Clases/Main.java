@@ -839,7 +839,7 @@ public class Main {
 	private static void busquedaVehiculos(Connection con, String BDNombre, String matricula) throws SQLException {
 
 		Statement stmt = null;
-		String query = "select * " + " from " + BDNombre + ".estacionamiento WHERE dni_inquilino = '" + matricula + "'";
+		String query = "select * " + " from " + BDNombre + ".estacionamiento WHERE matricula_vehiculo = '" + matricula + "'";
 
 		try {
 
@@ -854,17 +854,25 @@ public class Main {
 
 				System.out.println("");
 				System.out.println("*************************************");
-				String nombre = rs.getString(1);
-				System.out.println("Nombre: " + nombre);
+		
 
-				String dni_inquilino = rs.getString(1);
+				String dni_inquilino = rs.getString(6);
 				System.out.println("Dni inquilino: " + dni_inquilino);
 
-				String matricula_vehiculo = rs.getString(2);
+				String matricula_vehiculo = rs.getString(1);
 				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
 
-				String codigo_estacionamiento = rs.getString(3);
-				System.out.println("Codigo estacionamiento: " + codigo_estacionamiento);
+				String modelo = rs.getString(2);
+				System.out.println("Modelo: " + modelo);
+				
+				String marca = rs.getString(3);
+				System.out.println("Marca: " + marca);
+				
+				String color = rs.getString(4);
+				System.out.println("Color: " + color);
+				
+				String tipoVehiculo = rs.getString(5);
+				System.out.println("Tipo vehiculo: " + tipoVehiculo);
 
 				System.out.println("*************************************");
 
