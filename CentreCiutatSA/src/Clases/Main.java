@@ -131,8 +131,6 @@ public class Main {
 					System.out.println("");
 					inicioSesion(con, "centreciutat", user, pass);
 
-					// el int i y la condicion son para que no de error
-
 					String tipoUser = "";
 					String query = "select user, password, admin from centreciutat.usuarios where user = '" + user
 							+ "' and password = '" + pass + "'";
@@ -165,7 +163,6 @@ public class Main {
 					if (userBDD.equals(user) && passBDD.equals(pass)) {
 						System.out.println("Sesión iniciada.");
 						if (tipoUser.equals("s")) {
-							System.out.println("Eres administrador, menu admin.");
 							int salir = 0;
 							while (salir != 5) {
 								Scanner Adm = new Scanner(System.in);
@@ -182,7 +179,7 @@ public class Main {
 								System.out.println("2) EDITAR ALQUILERES");
 								System.out.println("3) ELIMINAR ALQUILERES");
 								System.out.println("4) LISTAR ALQUILERES");
-								System.out.println("5) SALIR AL INICIO");
+								System.out.println("5) SALIR DE LA APLICACIÓN");
 								System.out.println("");
 
 								System.out.print("¿Que desea hacer?: ");
@@ -321,7 +318,6 @@ public class Main {
 								}// switch admin cierre
 							} // while admin cierre
 						} else if (tipoUser.equals("n")) {
-							System.out.println("No eres administrador, menu normal.");
 							int salir = 0;
 							while (salir != 3) {// TODO while user
 								Scanner userMenu = new Scanner(System.in);
@@ -337,7 +333,7 @@ public class Main {
 
 								System.out.println("1) BUSCAR USUARIOS");
 								System.out.println("2) BUSCAR VEHICULOS");
-								System.out.println("3) SALIR AL INICIO");
+								System.out.println("3) SALIR DE LA APLICACIÓN");
 								System.out.println("");
 
 								System.out.print("¿Que desea hacer?: ");
