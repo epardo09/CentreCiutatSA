@@ -797,7 +797,7 @@ public class Main {
 	private static void busquedaUsuarios(Connection con, String BDNombre, String dni) throws SQLException {
 
 		Statement stmt = null;
-		String query = "select * " + " from " + BDNombre + ".inquilino";
+		String query = "select * " + " from " + BDNombre + ".inquilinos WHERE dni_inquilino = '" + dni + "'";
 
 		try {
 
@@ -812,16 +812,16 @@ public class Main {
 
 				System.out.println("");
 				System.out.println("*************************************");
-				String nombre = rs.getString(1);
+				String nombre = rs.getString(2);
 				System.out.println("Nombre: " + nombre);
 
 				String dni_inquilino = rs.getString(1);
 				System.out.println("Dni inquilino: " + dni_inquilino);
 
-				String matricula_vehiculo = rs.getString(2);
+				String matricula_vehiculo = rs.getString(6);
 				System.out.println("Matricula vehiculo: " + matricula_vehiculo);
 
-				String codigo_estacionamiento = rs.getString(3);
+				String codigo_estacionamiento = rs.getString(7);
 				System.out.println("Codigo estacionamiento: " + codigo_estacionamiento);
 
 				System.out.println("*************************************");
