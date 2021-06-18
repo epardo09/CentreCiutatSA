@@ -709,7 +709,6 @@ public class Main {
 
 			}
 			if (dniBDD == null) {
-				System.out.println("Ta gucci");
 				String busca = "select * from " + BDNombre + ".estacionamiento where dni_inquilino = " + "'" + dni
 						+ "'";
 
@@ -741,7 +740,7 @@ public class Main {
 				stmt.executeUpdate(cambiarCodEstInquilino);
 
 			} else {
-				System.out.println("NO ta gucci");
+				System.out.println("El estacionamiento está ocupado por otro usuario.");
 			}
 
 
