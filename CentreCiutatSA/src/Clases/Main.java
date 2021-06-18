@@ -839,7 +839,7 @@ public class Main {
 	private static void busquedaVehiculos(Connection con, String BDNombre, String matricula) throws SQLException {
 
 		Statement stmt = null;
-		String query = "select * " + " from " + BDNombre + ".estacionamiento";
+		String query = "select * " + " from " + BDNombre + ".estacionamiento WHERE dni_inquilino = '" + matricula + "'";
 
 		try {
 
